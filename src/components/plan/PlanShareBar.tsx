@@ -148,9 +148,7 @@ export default function PlanShareBar({
               onClick={() => setShareMenuOpen((v) => !v)}
               className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white/90 text-olive border border-sand-200/80 hover:border-terracotta/20 hover:bg-sand-100/60 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               aria-expanded={shareMenuOpen}
-              aria-haspopup="true"
-              aria-controls="plan-share-menu"
-              aria-label={tPlan("aria.shareMenu")}
+              aria-controls={shareMenuOpen ? "plan-share-menu" : undefined}
             >
               {tPlan("share.copyAndShare")}
               <span className={`text-muted-ink transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>

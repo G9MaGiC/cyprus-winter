@@ -126,11 +126,35 @@ describe("useTrapFocus", () => {
     expect(onEscape).toHaveBeenCalledTimes(1);
   });
 
-  it("useFocusTrap: attaches no listener while inactive (the BUG-359 shape)", () => {
+  it("useFocusTrap: registers its keydown listener only while active (the BUG-359 shape, structurally)", () => {
+    const addSpy = vi.spyOn(window, "addEventListener");
     const onEscape = vi.fn();
     render(<Sheet onEscape={onEscape} />);
+    const keydownAdds = () =>
+      addSpy.mock.calls.filter(([type]) => type === "keydown").length;
+    // Not merely "Escape does nothing while closed" — no listener EXISTS,
+    // so the guard cannot be deleted without this failing.
+    expect(keydownAdds()).toBe(0);
     fireEvent.keyDown(document, { key: "Escape" });
     expect(onEscape).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "open" }));
+    expect(keydownAdds()).toBe(1);
+    addSpy.mockRestore();
+  });
+
+  it("useFocusTrap: an inline (unstable) onEscape neither re-steals focus nor goes stale", () => {
+    const calls: string[] = [];
+    const { rerender } = render(<Sheet onEscape={() => calls.push("first")} />);
+    fireEvent.click(screen.getByRole("button", { name: "open" }));
+    const last = screen.getByRole("button", { name: "last" });
+    last.focus();
+    // A parent re-render hands the hook a brand-new callback identity.
+    rerender(<Sheet onEscape={() => calls.push("second")} />);
+    // The trap effect must not re-fire and yank focus back to "first"...
+    expect(document.activeElement).toBe(last);
+    // ...and Escape must still reach the LATEST callback, not a stale one.
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(calls).toEqual(["second"]);
   });
 
   it("the shared selector excludes disabled controls and includes inputs", () => {

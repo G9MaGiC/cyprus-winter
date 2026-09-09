@@ -238,12 +238,6 @@ async function extractLib(out: Record<string, string>): Promise<void> {
   add(out, "common.nav.openMenu", "Open menu");
   add(out, "common.nav.closeMenu", "Close menu");
   add(out, "common.skipToContent", "Skip to main content");
-  add(out, "common.footer.discover", "Discover");
-  add(out, "common.footer.plan", "Plan");
-  add(out, "common.footer.weather", "Weather");
-  add(out, "common.footer.bookings", "Bookings");
-  add(out, "common.footer.tagline", "Whether you found us from a Google search or at the airport: trails, villages, heritage. Olive groves, kafenions, Commandaria. Emergency 112 · Tourist info 1460 · Ambulance 199.");
-  add(out, "common.footer.tips", "Drive on the left. Pack layers. The island rewards the curious. Winter November to March. Questions? Tap Ask AI.");
   add(out, "ui.hero.kicker", "Winter in Cyprus");
   add(out, "ui.hero.headline", "Trails, villages, heritage");
   add(out, "ui.hero.intro", "Nature, heritage, and slow discovery. One trail, one village, one tasting.");
@@ -266,7 +260,13 @@ function extractTSX(out: Record<string, string>): void {
           if (!e.name.startsWith(".") && e.name !== "node_modules") {
             files.push(...walk(full));
           }
-        } else if (e.name.endsWith(".tsx") || e.name.endsWith(".ts")) {
+        } else if (
+          (e.name.endsWith(".tsx") || e.name.endsWith(".ts")) &&
+          // Test fixtures are not UI strings — without this, every
+          // characterization test's button label lands in the inventory.
+          !e.name.endsWith(".test.tsx") &&
+          !e.name.endsWith(".test.ts")
+        ) {
           files.push(full);
         }
       }

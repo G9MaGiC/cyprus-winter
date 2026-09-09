@@ -1,5 +1,5 @@
 /** @vitest-environment jsdom */
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { useState } from "react";
 import { AIAssistant } from "./AIAssistant";
@@ -48,15 +48,29 @@ vi.mock("lucide-react", () => ({
   X: () => null,
 }));
 
+// jsdom's offsetParent is always null; the close-fallback uses it as a
+// visibility probe, so approximate it: display:none → null (invisible),
+// otherwise the parent. The shim must not flatten the very distinction the
+// fallback exists to make (skip the hidden desktop trigger, land on the
+// visible hamburger) — and it is restored afterAll so it can never leak
+// into another suite if per-file isolation is ever turned off.
+const originalOffsetParent = Object.getOwnPropertyDescriptor(
+  HTMLElement.prototype,
+  "offsetParent"
+);
 beforeAll(() => {
-  // jsdom's offsetParent is always null; the close-fallback uses it as a
-  // visibility probe, so approximate "visible" as "attached to a parent".
   Object.defineProperty(HTMLElement.prototype, "offsetParent", {
     configurable: true,
     get() {
-      return (this as HTMLElement).parentElement;
+      const el = this as HTMLElement;
+      return el.style.display === "none" ? null : el.parentElement;
     },
   });
+});
+afterAll(() => {
+  if (originalOffsetParent) {
+    Object.defineProperty(HTMLElement.prototype, "offsetParent", originalOffsetParent);
+  }
 });
 
 function openAssistant() {
@@ -124,6 +138,12 @@ describe("AIAssistant trap", () => {
       return (
         <>
           <nav>
+            {/* Mirrors the real Nav: the desktop More button matches the
+                fallback's selector first but is display:none on mobile —
+                the fallback must skip it for the visible hamburger. */}
+            <button type="button" aria-expanded="false" style={{ display: "none" }}>
+              desktop more
+            </button>
             <button type="button" aria-expanded="false">
               hamburger
             </button>

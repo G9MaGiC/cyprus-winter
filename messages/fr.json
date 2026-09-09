@@ -2708,7 +2708,6 @@
     "description": "Sentiers, villages, domaines. Planifiez au fil de l'eau — sans compte.",
     "cta": "Explorer",
     "skip": "Passer",
-    "intentQuestion": "Qu'est-ce qui compte le plus maintenant ?",
     "intentLabel": "Ou dites-nous pourquoi vous êtes ici",
     "intentPlanning": "Planifier mon voyage",
     "intentExploring": "Explorer des lieux",

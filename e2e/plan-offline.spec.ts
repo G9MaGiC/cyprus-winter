@@ -25,14 +25,14 @@ test.describe("Plan offline read-only", () => {
     // Scoped to the itinerary region: during streaming promotion the raw id
     // transiently resolves to two nodes (BUG-353 class) and a bare locator
     // aborts on strict mode; only the live copy is in the a11y tree.
-    await page
+    const sentinel = page
       .getByRole("region", { name: "Your plan" })
-      .locator("#plan-add-sentinel")
-      .waitFor({ state: "attached" });
-    await page.evaluate(() => {
-      const sentinel = document.getElementById("plan-add-sentinel");
-      if (!sentinel) return;
-      window.scrollTo(0, sentinel.offsetTop + 120);
+      .locator("#plan-add-sentinel");
+    await sentinel.waitFor({ state: "attached" });
+    // Scroll via the same region-scoped handle — a raw getElementById here
+    // could still read offsetTop off a staged duplicate (BUG-353 class).
+    await sentinel.evaluate((el) => {
+      window.scrollTo(0, (el as HTMLElement).offsetTop + 120);
     });
     await expect(page.getByRole("complementary", { name: /add place/i })).toBeVisible({
       timeout: 10000,

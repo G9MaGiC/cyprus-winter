@@ -1,6 +1,7 @@
 /** @vitest-environment jsdom */
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
 import Nav from "./Nav";
 
 /**
@@ -66,7 +67,7 @@ describe("Nav mobile menu trap", () => {
   it("moves initial focus into the menu and wraps Tab in both directions", () => {
     render(<Nav />);
     const menu = openMobileMenu();
-    const focusables = Array.from(menu.querySelectorAll<HTMLElement>("a, button"));
+    const focusables = Array.from(menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
     expect(document.activeElement).toBe(first);
@@ -111,7 +112,7 @@ describe("Nav desktop More menu trap", () => {
   it("moves initial focus into the menu and wraps Tab in both directions", () => {
     render(<Nav />);
     const menu = openMoreMenu();
-    const focusables = Array.from(menu.querySelectorAll<HTMLElement>("a, button"));
+    const focusables = Array.from(menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
     expect(document.activeElement).toBe(first);

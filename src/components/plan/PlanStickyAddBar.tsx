@@ -17,13 +17,16 @@ type PlanStickyAddBarProps = {
 // staged copy inside a hidden container plus the live one (BUG-353 class).
 // getElementById takes the first match, and observing a staged [hidden] copy
 // would pin the bar on forever (it never intersects, and the effect never
-// re-queries). Prefer the last match outside any [hidden] subtree.
-function liveElementById(id: string): HTMLElement | null {
-  const nodes = document.querySelectorAll<HTMLElement>(`#${CSS.escape(id)}`);
+// re-queries). Prefer the last match outside any [hidden] subtree; when every
+// match is hidden, return null (the bar stays hidden — the safe default)
+// rather than hand back the very node the helper exists to avoid. Attribute
+// selector, not #id: jsdom has no CSS.escape, and the ids are constants.
+export function liveElementById(id: string): HTMLElement | null {
+  const nodes = document.querySelectorAll<HTMLElement>(`[id="${id}"]`);
   for (let i = nodes.length - 1; i >= 0; i--) {
     if (!nodes[i].closest("[hidden]")) return nodes[i];
   }
-  return nodes[0] ?? null;
+  return null;
 }
 
 /**

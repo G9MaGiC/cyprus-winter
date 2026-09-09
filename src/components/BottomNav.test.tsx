@@ -1,6 +1,7 @@
 /** @vitest-environment jsdom */
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
 import BottomNav from "./BottomNav";
 
 /**
@@ -63,7 +64,7 @@ describe("BottomNav More sheet trap", () => {
   it("moves initial focus into the sheet and wraps Tab in both directions", () => {
     render(<BottomNav />);
     const { menu } = openMore();
-    const links = Array.from(menu.querySelectorAll<HTMLElement>("a"));
+    const links = Array.from(menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
     const first = links[0];
     const last = links[links.length - 1];
     expect(document.activeElement).toBe(first);
@@ -88,7 +89,10 @@ describe("BottomNav More sheet trap", () => {
 
   it("outside click closes the sheet without restoring focus to the trigger", () => {
     render(<BottomNav />);
-    const { trigger } = openMore();
+    const { trigger, menu } = openMore();
+    // The trap must actually be holding focus first — otherwise the
+    // focus-falls-to-body assertion below passes even with no trap at all.
+    expect(document.activeElement).toBe(menu.querySelector("a"));
 
     fireEvent.click(document.body);
     expect(screen.queryByRole("list")).toBeNull();

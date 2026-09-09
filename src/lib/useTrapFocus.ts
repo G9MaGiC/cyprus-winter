@@ -1,7 +1,7 @@
 /**
  * Trap focus within a modal container and handle Escape.
  */
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 /**
  * The one focusable-element selector every trap shares (hook and the
@@ -20,7 +20,9 @@ type FocusTrapOptions = {
    * Called on Escape. Focus restore stays with the caller: the close paths
    * are deliberately asymmetric (Nav restores on a rAF, BottomNav restores
    * synchronously on Escape but NOT on outside tap), and the hook must not
-   * flatten that.
+   * flatten that. Identity is free — the latest callback is kept in a ref,
+   * so an inline arrow cannot re-fire the trap effect (which would re-grab
+   * focus on every parent re-render).
    */
   onEscape: () => void;
 };
@@ -35,11 +37,14 @@ type FocusTrapOptions = {
  * element — so Escape still closes when focus has drifted out of the
  * container, and it exists ONLY
  * while active — an unconditional handler is exactly the BUG-359 regression
- * (Escape anywhere stole focus to the hamburger). Callers must pass a
- * useCallback-stable onEscape or the effect re-fires and re-grabs focus on
- * every render. Modals keep using useTrapFocus above (onKeyDown-prop model).
+ * (Escape anywhere stole focus to the hamburger). Modals keep using
+ * useTrapFocus above (onKeyDown-prop model).
  */
 export function useFocusTrap({ active, containerRef, onEscape }: FocusTrapOptions) {
+  const onEscapeRef = useRef(onEscape);
+  useEffect(() => {
+    onEscapeRef.current = onEscape;
+  }, [onEscape]);
   useEffect(() => {
     if (!active) return;
     const container = containerRef.current;
@@ -48,7 +53,7 @@ export function useFocusTrap({ active, containerRef, onEscape }: FocusTrapOption
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
-        onEscape();
+        onEscapeRef.current();
         return;
       }
       if (e.key !== "Tab" || !containerRef.current) return;
@@ -70,7 +75,7 @@ export function useFocusTrap({ active, containerRef, onEscape }: FocusTrapOption
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active, containerRef, onEscape]);
+  }, [active, containerRef]);
 }
 
 export function useTrapFocus() {

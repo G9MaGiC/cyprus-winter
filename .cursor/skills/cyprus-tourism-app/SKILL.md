@@ -257,7 +257,7 @@ type TeamMember = {
 - [ ] New pages include `Link` back (e.g. "← Back") where appropriate
 - [ ] Mobile-first: test layouts at 375px and up (chat components: test primary flows at 375px viewport)
 - [ ] No hardcoded hex in JSX — use Tailwind classes
-- [ ] No hardcoded user-facing strings — `npm run i18n:scan --fail` and `npm run i18n:validate` pass
+- [ ] No hardcoded user-facing strings — `npm run i18n:scan -- --fail` and `npm run i18n:validate` pass
 - [ ] Data files export typed arrays; keep content factual for Cyprus; `npm run data:validate` passes
 - [ ] Images: use gradient placeholders until real assets; path under `/public`
 - [ ] Full merge gate before claiming done: see `AGENTS.md` (lint, typecheck, test, i18n, data, build)

@@ -68,9 +68,11 @@ jobs:
         run: npm run i18n:validate
 
       - name: i18n coverage
-        # Strict since batch 69: the detector is precise (batches 67-68 took
-        # the report from 2,131 false positives to a clean 0/0), so an unused
-        # or missing key is now a real defect worth failing the build over.
+        # Strict since batch 69: batches 67-68 took the report from 2,131
+        # false positives to 0/0, so a reported unused or missing key is a
+        # real defect worth failing the build over. Scope caveat (batch 72):
+        # keys under dynamic/indirect namespaces (~55% of the catalog) are
+        # exempt from per-key tracking; the script prints the count each run.
         run: npm run i18n:coverage -- --strict
 
       - name: i18n hardcoded scan

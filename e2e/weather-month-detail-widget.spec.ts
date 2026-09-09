@@ -44,10 +44,14 @@ test.describe("Weather month detail -> Right now widget", () => {
     await expect(page.locator('a[href="/weather/december"]').first()).toBeVisible();
     await expect(page.locator('a[href="/weather/april"]').first()).toBeVisible();
 
-    // Month-specific discovery chips (e.g., Monasteries). `.first()` like the
-    // month-jump assertions above: date-rotated sections can legitimately
-    // render the same chip twice, which trips strict mode (b69 flake).
-    await expect(page.locator('a[href="/discover?filter=monastery"]').first()).toBeVisible();
+    // Month-specific discovery chips (e.g., Monasteries). Date-rotated
+    // sections can legitimately render the same chip twice, which trips
+    // strict mode (b69 flake) — and a bare .first() would invert the flake
+    // if a hidden duplicate ever came first in DOM order, so ask for a
+    // visible one explicitly (b72).
+    await expect(
+      page.locator('a[href="/discover?filter=monastery"]').filter({ visible: true }).first()
+    ).toBeVisible();
   });
 });
 

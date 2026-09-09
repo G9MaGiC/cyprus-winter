@@ -233,6 +233,25 @@ test.describe("Visual QA gate", () => {
       await expectNoHorizontalOverflow(page);
     });
 
+    test("/he home with recently-viewed strip — RTL scroller without overflow", async ({ page }) => {
+      // The strip is storage-gated, so the plain /he shot above never renders
+      // it — seed a visit history so the horizontal scroller (border-s-4
+      // cards, batch 66) gets RTL overflow coverage at all (batch 72).
+      await page.addInitScript(() => {
+        localStorage.setItem(
+          "cyprus-recently-viewed",
+          JSON.stringify([
+            { id: "omodos", name: "Omodos", type: "village", region: "Limassol", viewedAt: new Date().toISOString() },
+            { id: "lefkara", name: "Lefkara", type: "village", region: "Larnaca", viewedAt: new Date().toISOString() },
+          ])
+        );
+      });
+      await gotoAndSettle(page, "/he");
+      await expectRtlDocument(page);
+      await expect(page.locator("#recently-viewed-heading")).toBeVisible({ timeout: 15_000 });
+      await expectNoHorizontalOverflow(page);
+    });
+
     test("/he/plan populated — itinerary title readable at 375px (AUD-02 guard)", async ({ page }) => {
       // AUD-02 reproduced in Hebrew too; the href selector is locale-proof.
       await gotoAndSettle(page, "/he/plan?add=lefkara");
