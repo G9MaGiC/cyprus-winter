@@ -12,6 +12,8 @@ import type { DiscoverItem } from "@/data/discover";
 export type DiscoverPlaceOfDayPick = {
   id: string;
   name: string;
+  /** Greek-first titles via getLocalizedName, same contract as the cards. */
+  nameEl?: string;
   region: string;
   type: string;
   href: string;
@@ -19,7 +21,7 @@ export type DiscoverPlaceOfDayPick = {
   imageAlt: string;
   tease: string;
   overlay: string;
-  pairWith?: { name: string; href: string };
+  pairWith?: { name: string; nameEl?: string; href: string };
 };
 
 const fallbackByType: Record<string, string> = {
@@ -83,6 +85,7 @@ export function getDiscoverPlaceOfDayPicks(
     return {
       id: picked.id,
       name: picked.name,
+      nameEl: "nameEl" in picked ? picked.nameEl : undefined,
       region: picked.region,
       type: picked.type,
       href: `/discover/${picked.id}`,
@@ -91,7 +94,9 @@ export function getDiscoverPlaceOfDayPicks(
       tease: shortTease,
       overlay: overlayByType[picked.type] ?? "Worth a visit",
       pairWith:
-        pairPlace && pairHref ? { name: pairPlace.name, href: pairHref } : undefined,
+        pairPlace && pairHref
+          ? { name: pairPlace.name, nameEl: pairPlace.nameEl, href: pairHref }
+          : undefined,
     };
   });
 }

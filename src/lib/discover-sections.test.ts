@@ -57,10 +57,12 @@ describe("buildDiscoverSections", () => {
 
   it("family lane leads with the curated order, rest in catalog order", () => {
     const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
-    expect(family.items.slice(0, 3).map((i) => i.id)).toEqual([
+    expect(family.items.slice(0, 5).map((i) => i.id)).toEqual([
       "larnaca-aliki",
       "choirokoitia",
       "fig-tree-bay",
+      "nissi-beach",
+      "coral-bay",
     ]);
   });
 
@@ -95,7 +97,9 @@ describe("buildDiscoverSections", () => {
   it("family lane carries easy short trails via the trailLinks slot", () => {
     const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
     const trailIds = family.trailLinks?.map((t) => t.id) ?? [];
-    expect(trailIds).toContain("kavos-trail");
+    // Exact set: the builder silently drops unresolved ids, so a renamed
+    // trail must fail here, not shrink the lane's chips unnoticed (b83).
+    expect(trailIds).toEqual(["kavos-trail", "livadi-trail", "dwarf-oaks"]);
     for (const link of family.trailLinks ?? []) {
       expect(link.href).toBe(`/trails/${link.id}`);
       expect(link.name.length).toBeGreaterThan(0);

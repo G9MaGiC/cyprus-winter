@@ -15,6 +15,8 @@ export type TrailPlaceOfDayOverlayKey = "openWithTemp" | "open" | "caution" | "s
 export type TrailPlaceOfDayPick = {
   id: string;
   name: string;
+  /** Greek-first titles via getLocalizedName, same contract as the cards. */
+  nameEl?: string;
   region: string;
   href: string;
   image: string;
@@ -24,7 +26,7 @@ export type TrailPlaceOfDayPick = {
   overlayKey: TrailPlaceOfDayOverlayKey;
   temperatureC?: number;
   status?: "open" | "caution" | "closed";
-  pairWith?: { name: string; href: string };
+  pairWith?: { name: string; nameEl?: string; href: string };
 };
 
 function isIdealConditions(trail: Trail): boolean {
@@ -69,6 +71,7 @@ export function getTrailPlaceOfDayPick(): TrailPlaceOfDayPick | null {
   return {
     id: picked.id,
     name: picked.name,
+    nameEl: picked.nameEl,
     region: picked.region,
     href: `/trails/${picked.id}`,
     image: getTrailImage(picked.id),
@@ -81,6 +84,8 @@ export function getTrailPlaceOfDayPick(): TrailPlaceOfDayPick | null {
     temperatureC: conditions?.temperatureC,
     status: conditions?.status,
     pairWith:
-      pairPlace && pairHref ? { name: pairPlace.name, href: pairHref } : undefined,
+      pairPlace && pairHref
+        ? { name: pairPlace.name, nameEl: pairPlace.nameEl, href: pairHref }
+        : undefined,
   };
 }

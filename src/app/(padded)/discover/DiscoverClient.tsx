@@ -122,7 +122,16 @@ export default function DiscoverClient({
     s.items.some((i) => "type" in i && i.type === "winery")
   );
 
-  const totalCount = sectionsToShow.reduce((sum, s) => sum + s.items.length, 0);
+  // The map plots a filtered section's trailLinks (batch 81/83), so on the
+  // map view the announced/filter-bar count includes those pins — otherwise
+  // the SR announcement says N while the map heading shows N+trails.
+  const mapShowsTrailLinks = sectionExists && sectionsToShow.length === 1;
+  const trailLinkCount = mapShowsTrailLinks
+    ? sectionsToShow.reduce((sum, s) => sum + (s.trailLinks?.length ?? 0), 0)
+    : 0;
+  const totalCount =
+    sectionsToShow.reduce((sum, s) => sum + s.items.length, 0) +
+    (viewMode === "map" ? trailLinkCount : 0);
   const activeSection = isActivity
     ? activitySection
     : sections.find((s) => s.id === filter);
@@ -331,7 +340,7 @@ export default function DiscoverClient({
           <div role="tabpanel" aria-labelledby="discover-tab-map">
             <DiscoverMapPanel
               sections={sectionsToShow}
-              isActivityFilter={isActivity}
+              filterResolved={sectionExists}
               planFocus={planFocus}
               focusMode={mapFocusMode}
               onFocusModeChange={handleFocusModeChange}

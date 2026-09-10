@@ -1,6 +1,6 @@
 # Owner decisions — everything that still needs a signature, not a keyboard
 
-*Companion to `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` (batch 75). As of batches 56–80, every code-shaped item in the audit register is shipped, reviewed (two adversarial code passes, a claims audit, three full e2e battery runs, a security sweep) and locally verified; server-side CI gating remains unavailable under D0. What remains is listed here as one answerable decision each — with a recommendation, and with what ships the moment it's decided. Ordered by how much each decision unblocks.*
+*Companion to `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` (batch 75). As of batches 56–83, every code-shaped item in the audit register is shipped, reviewed (repeated adversarial code passes and claims audits, four full e2e battery runs, a security sweep) and locally verified; server-side CI gating remains unavailable under D0. What remains is listed here as one answerable decision each — with a recommendation, and with what ships the moment it's decided. Ordered by how much each decision unblocks.*
 
 ## D0 — Restore GitHub Actions (discovered during PR #236; blocks all CI value)
 
@@ -8,7 +8,7 @@
 
 **The decision:** check those two settings pages and restore Actions.
 
-**Until then:** the only real verification is the local pre-push battery every commit on this branch went through (three full 117-test suite runs included). Once restored, re-run the workflow on the latest commit to get the first server-side green since August.
+**Until then:** the only real verification is the local pre-push battery every commit on this branch went through (four full-suite runs included; the suite now counts 119 e2e tests). Once restored, re-run the workflow on the latest commit to get the first server-side green since August.
 
 ## D1 — Provision the real mailbox (AUD-67; unblocks AUD-81 residual)
 
@@ -64,7 +64,7 @@ Real partner photography for listing pages (§5 ledger). Nothing to build until 
 
 ## The pull request
 
-**PR #236 (batches 56–79) is merged to `main`** — three automated-review findings were fixed in flight, every thread resolved. Batch 80 (D6) lands as its own PR on the restarted branch. Reminder: none of the merges has had a server-side CI run — D0 above is still the standing gap.
+**PR #236 (batches 56–79) is merged to `main`.** The follow-up, **PR #237, carries batches 80–83** (the D6 family-lane curation, its review fixes, the name-localization sweep, and the post-arc review remediation) — approved by automated review, every thread resolved, sealed by a full-battery run against its head. **It merges on your word.** Reminder: none of the merges has had a server-side CI run — D0 above is still the standing gap.
 
 ## Closed by design (no decision needed)
 

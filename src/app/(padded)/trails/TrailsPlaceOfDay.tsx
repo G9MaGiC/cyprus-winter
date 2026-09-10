@@ -7,9 +7,11 @@ import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { getTrailPlaceOfDayPick } from "@/lib/trail-place-of-day";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
 
 export default function TrailsPlaceOfDay() {
+  const locale = useLocale();
   const tTrails = useTranslations("trails");
   const place = getTrailPlaceOfDayPick();
   const planItem = place ? getPlaceById(place.id) : undefined;
@@ -33,7 +35,7 @@ export default function TrailsPlaceOfDay() {
           <AppLink
             href={place.href}
             className="block sm:w-2/5 shrink-0 relative aspect-[4/3] sm:aspect-square"
-            aria-label={tTrails("placeOfDay.openAria", { name: place.name })}
+            aria-label={tTrails("placeOfDay.openAria", { name: getLocalizedName(place, locale) })}
           >
             <Image
               src={place.image}
@@ -58,7 +60,7 @@ export default function TrailsPlaceOfDay() {
                 href={place.href}
                 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1`}
               >
-                {place.name}
+                {getLocalizedName(place, locale)}
               </AppLink>
               <p className="text-sm text-olive/90 mt-2 leading-relaxed">
                 {place.tease}
@@ -70,7 +72,7 @@ export default function TrailsPlaceOfDay() {
                     href={place.pairWith.href}
                     className={`font-medium ${SECTION.aegeanLink}`}
                   >
-                    {place.pairWith.name}
+                    {getLocalizedName(place.pairWith, locale)}
                   </AppLink>
                 </p>
               )}

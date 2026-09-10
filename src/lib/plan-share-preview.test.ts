@@ -38,6 +38,14 @@ describe("buildPlanSharePreview", () => {
     expect(preview?.firstPlaceId).toBe("kourion");
   });
 
+  it("localizes named places for user-visible share text, keeps EN for metadata (b83)", () => {
+    const days = { ...emptyDays(), 1: ["omodos"] };
+    // el share text carries the Greek-first name the visitor saw on the card.
+    expect(buildPlanSharePreview(days, "el")?.named).toEqual(["Όμοδος"]);
+    // No locale = the metadata/OG path: EN base per the register contract.
+    expect(buildPlanSharePreview(days)?.named).toEqual(["Omodos"]);
+  });
+
   it("skips unknown ids", () => {
     const preview = buildPlanSharePreview({ ...emptyDays(), 1: ["not-a-place", "kourion"] });
     expect(preview?.named).toEqual(["Kourion"]);
