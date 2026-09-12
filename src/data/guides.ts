@@ -18,6 +18,10 @@ export type Guide = {
   bookingUrl?: string;
   partnerEmail?: string;
   isVerified?: boolean;
+  /** False keeps an unverified draft record out of public and booking surfaces. */
+  isPublic?: boolean;
+  sourceUrl?: string;
+  lastVerifiedAt?: string;
   partnerLeadFeeEur?: number;
 };
 
@@ -33,7 +37,9 @@ export const guides: Guide[] = [
     trailIds: ["artemis", "caledonia-falls", "atalante", "persephone", "adonis", "aphrodite"],
     contactPhone: "+357 99 123456",
     bookingUrl: "https://www.cyprusactivetours.com/",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+cyprus-active-tours@cyprus-winter.example",
     partnerLeadFeeEur: 10,
   },
@@ -47,7 +53,9 @@ export const guides: Guide[] = [
       "Local mountain guides for Troodos. Artemis, Atalante, Caledonia Falls, Olympus. Winter conditions know-how. Private and small-group hikes.",
     trailIds: ["artemis", "atalante", "caledonia-falls", "olympus-summit", "madari-ridge"],
     contactPhone: "+357 25 421123",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+troodos-guides@cyprus-winter.example",
     partnerLeadFeeEur: 10,
   },
@@ -61,7 +69,9 @@ export const guides: Guide[] = [
       "Akamas Peninsula and Paphos coast trails. Adonis, Aphrodite, Avakas—sea views, coastal paths. Winter is the sweet spot; no summer heat.",
     trailIds: ["adonis", "aphrodite", "avakas-gorge"],
     contactPhone: "+357 26 654321",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+akamas-explorer@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
@@ -75,7 +85,9 @@ export const guides: Guide[] = [
       "Paphos forest and Akamas edge trails. Smigies, Stavros tis Psokas, Vouni Panagias—pine ridges and quiet winter paths away from the coast crowds.",
     trailIds: ["smigies", "stavros-tis-psokas", "vouni-panagias", "pissouromoutti"],
     contactPhone: "+357 26 701234",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+paphos-forest-guides@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
@@ -89,7 +101,9 @@ export const guides: Guide[] = [
       "Platres-based guides for waterfall and forest loops. Millomeris, Kryos Potamos, Kampos tou Livadiou—ideal when higher Troodos trails are snow-lined but valleys stay walkable.",
     trailIds: ["millomeris-falls", "kryos-potamos-loop", "kampos-tou-livadiou", "horteri"],
     contactPhone: "+357 25 431567",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+platres-trail-co@cyprus-winter.example",
     partnerLeadFeeEur: 10,
   },
@@ -103,7 +117,9 @@ export const guides: Guide[] = [
       "East-coast coastal hiking without Troodos snow. Cape Greco coastal path, sea caves, and winter-light cliff walks. Mild temperatures; wind layer essential.",
     trailIds: ["cape-greco"],
     contactPhone: "+357 23 812345",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+cape-coast-guides@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
@@ -117,7 +133,9 @@ export const guides: Guide[] = [
       "Capital hinterland trails when Troodos is iced over. Xyliatos Dam loop, Machairas forest paths—reservoir views and pine without the mountain drive.",
     trailIds: ["xyliatos-dam", "machairas-forest"],
     contactPhone: "+357 22 901234",
-    isVerified: true,
+    isVerified: false,
+    isPublic: false,
+    lastVerifiedAt: "2026-09-02",
     partnerEmail: "bookings+nicosia-outdoor@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
