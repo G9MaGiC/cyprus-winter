@@ -930,12 +930,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "type": "winery"
   },
   {
-    "id": "santo",
-    "name": "Santo Winery",
-    "region": "Lemesos (Limassol)",
-    "type": "winery"
-  },
-  {
     "id": "tsangarides",
     "name": "Tsangarides Winery",
     "region": "Lemona (Paphos)",
@@ -960,12 +954,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "type": "winery"
   },
   {
-    "id": "ktima-vassiliades",
-    "name": "Ktima Vassiliades",
-    "region": "Omodos (Limassol)",
-    "type": "winery"
-  },
-  {
     "id": "ayia-mavri",
     "name": "Ayia Mavri Winery",
     "region": "Koilani (Limassol)",
@@ -981,12 +969,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "id": "hadjipavlou",
     "name": "Hadjipavlou Winery",
     "region": "Pera Pedi (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "olympus-winery",
-    "name": "Olympus Wineries",
-    "region": "Omodos (Limassol)",
     "type": "winery"
   },
   {
@@ -1014,54 +996,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "type": "winery"
   },
   {
-    "id": "tria-elit",
-    "name": "Tria Elit Winery",
-    "region": "Souni (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "nichteri",
-    "name": "Nichteri Winery",
-    "region": "Agios Dimitrianos (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "meletiou",
-    "name": "Meletiou Winery",
-    "region": "Kathikas (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "iona",
-    "name": "Iona Winery",
-    "region": "Koilani (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "komos",
-    "name": "Komos Winery",
-    "region": "Omodos (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "adege",
-    "name": "Adege Winery",
-    "region": "Vasa (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "syndesmos",
-    "name": "Syndesmos Winery",
-    "region": "Agios Georgios (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "savvas",
-    "name": "Savvas Winery",
-    "region": "Silikou (Limassol)",
-    "type": "winery"
-  },
-  {
     "id": "ayii-anargyri",
     "name": "Ayii Anargyri Winery",
     "region": "Miliou (Paphos)",
@@ -1080,63 +1014,9 @@ export const PLAN_ITEMS: PlanItem[] = [
     "type": "winery"
   },
   {
-    "id": "cholettis",
-    "name": "Cholettis Winery",
-    "region": "Statos (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "yiannis",
-    "name": "Yiannis Winery",
-    "region": "Kilani (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "petrides",
-    "name": "Petrides Winery",
-    "region": "Phinikas (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "monagri",
-    "name": "Monagri Winery",
-    "region": "Monagri (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "loukas",
-    "name": "Loukas Winery",
-    "region": "Omodos (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "stavrinos",
-    "name": "Stavrinos Winery",
-    "region": "Dhoros (Limassol)",
-    "type": "winery"
-  },
-  {
     "id": "avakas",
     "name": "Avakas Winery",
     "region": "Statos (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "krasas",
-    "name": "Krasas Winery",
-    "region": "Koilani (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "agios-theodoros",
-    "name": "Agios Theodoros Winery",
-    "region": "Agios Theodoros (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "ambeli",
-    "name": "Ambeli Winery",
-    "region": "Platres (Limassol)",
     "type": "winery"
   },
   {
@@ -1248,18 +1128,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "type": "winery"
   },
   {
-    "id": "povis",
-    "name": "Povis Winery",
-    "region": "Pano Panayia (Paphos)",
-    "type": "winery"
-  },
-  {
-    "id": "lambouri",
-    "name": "Lambouri Winery",
-    "region": "Koilani (Limassol)",
-    "type": "winery"
-  },
-  {
     "id": "sodap",
     "name": "SODAP Winery",
     "region": "Limassol",
@@ -1293,36 +1161,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "id": "dafermou",
     "name": "Ktima Dafermou",
     "region": "Larnaca",
-    "type": "winery"
-  },
-  {
-    "id": "zambeli",
-    "name": "Zambeli Winery",
-    "region": "Lemesos (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "linos",
-    "name": "Linos Winery",
-    "region": "Kato Platres (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "makrikontas",
-    "name": "Makrikontas Winery",
-    "region": "Vouni (Limassol)",
-    "type": "winery"
-  },
-  {
-    "id": "fikardou-winery",
-    "name": "Fikardou Wine Estate",
-    "region": "Fikardou (Nicosia)",
-    "type": "winery"
-  },
-  {
-    "id": "sygkrasi",
-    "name": "Sygkrasi Winery",
-    "region": "Kathikas (Paphos)",
     "type": "winery"
   },
   {
@@ -1377,12 +1215,6 @@ export const PLAN_ITEMS: PlanItem[] = [
     "id": "kakopetria-trout",
     "name": "Kakopetria Trout Tavernas",
     "region": "Troodos",
-    "type": "restaurant"
-  },
-  {
-    "id": "santo-restaurant",
-    "name": "Santo Restaurant",
-    "region": "Lemesos",
     "type": "restaurant"
   },
   {
