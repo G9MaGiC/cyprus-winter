@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-08-24T18:17:12.881Z",
-  "url": "https://cyprus-winter.vercel.app/api/health",
+  "capturedAt": "2026-08-31T00:11:24.021Z",
+  "url": "https://cyprus-winter-three.vercel.app/api/health",
   "httpStatus": 503,
   "public": {
     "ok": false,

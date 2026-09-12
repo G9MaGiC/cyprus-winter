@@ -253,7 +253,10 @@ Defaults match the live public origin (`cyprus-winter-three.vercel.app`) until `
 Defaults used `cypruswinter.com` (unattached) and health/Capacitor used `cyprus-winter.vercel.app` (stale alias).
 
 ### Fix status
-Fixed — `DEFAULT_PUBLIC_ORIGIN` shared across SITE_URL, Capacitor, and health/grant scripts.
+Fixed — `DEFAULT_PUBLIC_ORIGIN` shared across SITE_URL, Capacitor TS config, and health/grant scripts.
+
+### Follow-up
+Android synced assets (`android/app/src/main/assets/capacitor.config.json`) still pointed at the stale alias after #198; updated to `cyprus-winter-three.vercel.app` and grant health evidence recaptured.
 
 ---
 
@@ -1695,7 +1698,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | Item | Severity | Notes |
 |------|----------|-------|
-| Live `productionReady: false` on `cyprus-winter.vercel.app/api/health` (HTTP 503) | P0 | Set `UPSTASH_REDIS_REST_*` + `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` on Vercel. Recapture health after. |
+| Live `productionReady: false` on `cyprus-winter-three.vercel.app/api/health` (HTTP 503) | P0 | Set `UPSTASH_REDIS_REST_*` + `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` on Vercel. Recapture health after. |
 | `cypruswinter.com` DNS unresolved (last capture) | P0 | Registrar / DNS |
 | IRIS PRE-SEED/0526 submit by 11 Sep 2026 13:00 | P0 | CVs, legal entity, 15% co-finance; pack not submitted |
 | Tasting-room photos for remaining verified partners | P1 | Partner press kits only — `docs/WINERY_IMAGE_INTAKE.md` |
