@@ -31,7 +31,6 @@ export const LOCALIZED_RESTAURANT_IDS: ReadonlySet<string> = new Set([
   "cor-gastronomy",
   "sentio",
   "kakopetria-trout",
-  "santo-restaurant",
   "kouklia-cafe",
   // Slice 2 (batch 63): the next 11 in data order.
   "seasons-oriental",

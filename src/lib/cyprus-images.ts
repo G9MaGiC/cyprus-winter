@@ -114,7 +114,6 @@ export function getAttractionImage(id: string, type: string): string {
     "kourion-tavernas": `${local}/cyprus-ancient-kourion.jpg`,
     "cor-gastronomy": `${local}/cyprus-village-omodos.jpg`,
     "sentio": `${local}/cyprus-village-omodos.jpg`,
-    "santo-restaurant": `${local}/cyprus-governors-beach.jpg`,
     "seasons-oriental": `${local}/cyprus-governors-beach.jpg`, // Four Seasons Limassol
     "troodos-cycling-hub": `${local}/cyprus-trail-troodos.jpg`,
     "prodromos-dam-cycling": `${local}/cyprus-trail-waterfall.jpg`,
@@ -271,14 +270,11 @@ const wineryImages: Record<string, string> = {
   tsiakkas: `${local}/winery-tsiakkas.jpg`, // Pelendri vineyard (CC BY 2.0), not a tasting-room interior
   "vouni-panayia": `${local}/cyprus-vineyard-laona.jpg`,
   zambartas: `${local}/cyprus-vineyard-lofou-january.jpg`, // Krasochoria, not Laona/Paphos
-  santo: `${local}/cyprus-vineyard-lofou-january.jpg`,
   kyperounta: `${local}/cyprus-vineyard-mountain.jpg`,
   fikardos: `${local}/cyprus-vineyard-laona.jpg`,
   vlassides: `${local}/cyprus-winery-barrels.jpg`,
   vasilikon: `${local}/cyprus-trail-gorge.jpg`,
-  "ktima-vassiliades": `${local}/cyprus-winery-barrels.jpg`,
   "oenou-yi": `${local}/cyprus-winery-omodos-tasting.jpg`,
-  savvas: `${local}/cyprus-vineyard-silikou.jpg`,
 };
 
 /** Wine-route regional fallbacks when no per-id image exists. */

@@ -53,7 +53,6 @@ export const LOCALIZED_SECRET_GEM_IDS: ReadonlySet<string> = new Set([
   "tsiakkas-heights",
   "vasilikon-akamas",
   "vlassides-rainbow",
-  "santo-sunset",
   "kyperounta-snow",
   "domes-atupon",
   "tsangarides-organic",
