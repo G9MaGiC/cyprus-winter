@@ -34,6 +34,10 @@ export type Restaurant = {
   transport?: string;
   /** Parking info */
   parking?: string;
+  /** False keeps an unverified record out of public and booking surfaces. */
+  isPublic?: boolean;
+  sourceUrl?: string;
+  lastVerifiedAt?: string;
   /** Dining venues (restaurants, cafés, bars) at multi-venue locations */
   diningVenues?: string[];
   /** Shops and boutiques at multi-venue locations */
@@ -49,7 +53,7 @@ export type Restaurant = {
   longitude?: number;
 };
 
-export const restaurants: Restaurant[] = [
+const restaurantRecords: Restaurant[] = [
   {
     id: "zygi-tavernas",
     name: "Zygi Fish Tavernas",
@@ -129,7 +133,7 @@ export const restaurants: Restaurant[] = [
     winterTip: "On the Akamas loop. Do Adonis or Aphrodite in the morning, then book lunch. Reserve 1–2 days ahead; weekends fill.",
     bestTimeToVisit: "Lunch; arrive 1–2pm after morning trail",
     localSecret: "Kathikas village. Ethnic Asian comfort. The Akamas trails earn you this meal. Vasilikon and Sygkrasi wineries are minutes away.",
-    combineWith: ["adonis", "aphrodite", "smigies", "vasilikon", "sygkrasi", "kathikas-tavernas"],
+    combineWith: ["adonis", "aphrodite", "smigies", "vasilikon", "kathikas-tavernas"],
     transport: "Kathikas village. On the Akamas–Laona loop. ~35 min from Paphos.",
     parking: "Village parking; book ahead.",
     latitude: 34.839,
@@ -254,10 +258,13 @@ export const restaurants: Restaurant[] = [
     winterTip: "Book lunch for sea views. Heaters in winter. Sunset around 5pm in December.",
     bestTimeToVisit: "Lunch; 12 to 2pm or sunset",
     localSecret: "Their Ayios Onoufrios red pairs with Cypriot meze. Ask for a wine-paired lunch.",
-    combineWith: ["santo", "kourion", "governors-beach"],
+    combineWith: ["kourion", "governors-beach"],
     latitude: 34.72,
     longitude: 33.05,
     priceRange: "€€",
+    isPublic: false,
+    sourceUrl: "https://santowines.gr/visit-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kouklia-cafe",
@@ -422,7 +429,7 @@ export const restaurants: Restaurant[] = [
     winterTip: "Cobbled square. Winter sun. After Tsiakkas, Lania, or Artemis trail. Reserve weekends.",
     bestTimeToVisit: "Lunch; reserve weekends",
     localSecret: "The natural lunch stop on the Krasochoria loop. Meze, wine, the pace of the village. One kafenion has a blue door—the winemakers use it.",
-    combineWith: ["omodos", "tsiakkas", "oenou-yi", "lania", "loukas", "artemis"],
+    combineWith: ["omodos", "tsiakkas", "oenou-yi", "lania", "artemis"],
     transport: "Omodos village, Krasochoria. ~40 min from Limassol.",
     parking: "Village square; fills at weekends.",
     latitude: 34.847,
@@ -620,7 +627,7 @@ export const restaurants: Restaurant[] = [
     winterTip: "Akamas loop. Trail in the morning, Kathikas lunch. The Farmyard books up; reserve 1–2 days ahead.",
     bestTimeToVisit: "Lunch; after morning trail",
     localSecret: "Kathikas sits on the loop. Meze, wine. The Farmyard or simpler spots. Vasilikon and Sterna wineries nearby.",
-    combineWith: ["adonis", "aphrodite", "smigies", "the-farmyard", "vasilikon", "sygkrasi"],
+    combineWith: ["adonis", "aphrodite", "smigies", "the-farmyard", "vasilikon"],
     transport: "Kathikas village. On the Akamas–Laona loop. ~35 min from Paphos.",
     parking: "Village parking.",
     latitude: 34.839,
@@ -766,3 +773,8 @@ export const restaurants: Restaurant[] = [
     priceRange: "€€",
   },
 ];
+
+export const restaurants: Restaurant[] = restaurantRecords.filter(
+  (restaurant) => restaurant.isPublic !== false
+);
+
