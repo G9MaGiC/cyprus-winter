@@ -31,12 +31,14 @@ function stableId(input: string): string {
 
 /** Extract from data files via dynamic import (requires tsx) */
 async function extractData(out: Record<string, string>): Promise<void> {
+  // bestFor is deliberately absent: the runtime localizes those tokens
+  // through the shared data.bestFor.{slug} vocabulary (AUD-99, batch 32),
+  // never per record — per-record rows were phantom work for reviewers.
   const ATTR_FIELDS = [
     "name",
     "description",
     "region",
     "highlights",
-    "bestFor",
     "backstory",
     "winterTip",
     "bestTimeToVisit",
@@ -78,7 +80,7 @@ async function extractData(out: Record<string, string>): Promise<void> {
   };
 
   try {
-    const { beaches, ancientSites, villages, monasteries } = await import(
+    const { beaches, natureSites, ancientSites, villages, monasteries } = await import(
       importPath(path.join(SRC, "data/attractions.ts"))
     );
     const { wineries } = await import(importPath(path.join(SRC, "data/wineries.ts")));
@@ -112,6 +114,28 @@ async function extractData(out: Record<string, string>): Promise<void> {
     for (const r of restaurants) extractItem(r as Record<string, unknown>, "data.restaurants", ATTR_FIELDS);
     for (const t of trails) extractItem(t as Record<string, unknown>, "data.trails", TRAIL_FIELDS);
     for (const e of winterEvents) extractItem(e as Record<string, unknown>, "data.events", ATTR_FIELDS);
+
+    // The bestFor vocabulary the runtime actually ships: one data.bestFor.{slug}
+    // row per unique token, over the same nine sources best-for.test.ts guards.
+    const { activityPlaces } = await import(importPath(path.join(SRC, "data/activity-places.ts")));
+    const { ITINERARY_TEMPLATES } = await import(importPath(path.join(SRC, "data/itinerary-templates.ts")));
+    const { slugifyBestFor } = await import(importPath(path.join(SRC, "lib/best-for-shared.ts")));
+    const bestForSources: { bestFor?: string[] }[] = [
+      ...beaches,
+      ...natureSites,
+      ...ancientSites,
+      ...villages,
+      ...monasteries,
+      ...wineries,
+      ...restaurants,
+      ...activityPlaces,
+      ...ITINERARY_TEMPLATES,
+    ];
+    for (const item of bestForSources) {
+      for (const token of item.bestFor ?? []) {
+        add(out, `data.bestFor.${slugifyBestFor(token)}`, token);
+      }
+    }
 
     // Mirror the runtime scheme in airport-content.ts exactly (PR #236
     // Codex finding): lowercase code, slug-keyed transport (its
@@ -354,26 +378,31 @@ function extractManifest(out: Record<string, string>): void {
   if (messages.manifest?.description) add(out, "manifest.description", messages.manifest.description);
 }
 
-async function main(): Promise<void> {
+/** Build the full sorted inventory without touching disk (freshness test seam). */
+export async function buildStrings(): Promise<Record<string, string>> {
   const out: Record<string, string> = {};
-  console.log("Extracting from data files...");
   await extractData(out);
-  console.log("Extracting from lib...");
   await extractLib(out);
-  console.log("Extracting from TSX...");
   extractTSX(out);
-  console.log("Extracting from manifest...");
   extractManifest(out);
-  console.log("Extracting HomeHero t() keys...");
   extractHomeHero(out);
+  return Object.fromEntries(Object.entries(out).sort(([a], [b]) => a.localeCompare(b)));
+}
 
-  const sorted = Object.fromEntries(Object.entries(out).sort(([a], [b]) => a.localeCompare(b)));
+async function main(): Promise<void> {
+  console.log("Extracting...");
+  const sorted = await buildStrings();
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(sorted, null, 2), "utf-8");
   console.log(`Wrote ${Object.keys(sorted).length} strings to ${OUTPUT_PATH}`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+const isMain =
+  process.argv[1] != null &&
+  importPath(path.resolve(process.argv[1])) === import.meta.url;
+if (isMain) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}

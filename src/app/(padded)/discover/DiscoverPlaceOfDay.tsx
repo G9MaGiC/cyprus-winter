@@ -8,7 +8,8 @@ import { CARD, LAYOUT, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { allDiscoverItems } from "@/data/discover";
 import { getDiscoverPlaceOfDayPicks } from "@/lib/discover-place-of-day";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
 
 const OVERLAY_KEY_BY_TYPE: Record<string, string> = {
   winery: "quietWeek",
@@ -25,6 +26,7 @@ function PlaceOfDayCard({
 }: {
   defaultCollapsed?: boolean;
 }) {
+  const locale = useLocale();
   const t = useTranslations("discover.page.placeOfDay");
   const picks = getDiscoverPlaceOfDayPicks(allDiscoverItems);
   const place = picks[0] ?? null;
@@ -74,14 +76,14 @@ function PlaceOfDayCard({
             href={place.href}
             className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1`}
           >
-            {place.name}
+            {getLocalizedName(place, locale)}
           </AppLink>
           <p className="text-sm text-olive/90 mt-2 leading-relaxed">{place.tease}</p>
           {place.pairWith && (
             <p className="text-sm text-muted-ink mt-3">
               {t("pairWith")}{" "}
               <AppLink href={place.pairWith.href} className={`font-medium ${SECTION.aegeanLink}`}>
-                {place.pairWith.name}
+                {getLocalizedName(place.pairWith, locale)}
               </AppLink>
             </p>
           )}
@@ -92,7 +94,7 @@ function PlaceOfDayCard({
                 <span key={p.id}>
                   {i > 0 && ", "}
                   <AppLink href={p.href} className={`font-medium ${SECTION.aegeanLink}`}>
-                    {p.name}
+                    {getLocalizedName(p, locale)}
                   </AppLink>
                 </span>
               ))}

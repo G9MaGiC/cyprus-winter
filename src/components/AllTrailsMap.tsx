@@ -6,6 +6,7 @@ import MapInteractionGuard from "@/components/MapInteractionGuard";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
+import { getLocalizedName } from "@/lib/localize";
 import type { Trail } from "@/data/trails";
 import { TOKENS, MAP_ICON_SHADOW, TYPE, LAYER } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -107,7 +108,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
                   href={`/trails/${trail.id}`}
                   className={`${TYPE.cardTitle} block mb-1`}
                 >
-                  {trail.name}
+                  {getLocalizedName(trail, locale)}
                 </AppLink>
                 <p className="text-xs text-muted-ink mb-3">
                   {tTrails("map.popupMeta", { region: trail.region, km: formatNumber(trail.lengthKm) })}

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { allDiscoverItems } from "@/data/discover";
+import { getLocalizedName } from "@/lib/localize";
 import {
   ACTIVITY_FILTER_KEYS,
   ACTIVITY_PLACE_IDS,
@@ -29,5 +30,17 @@ describe("activity-catalog", () => {
     for (const key of ACTIVITY_FILTER_KEYS) {
       expect(countActivityOptions(key), `${key} total options`).toBeGreaterThanOrEqual(3);
     }
+  });
+
+  it("trailLinks carry nameEl so chip renderers can localize (b82)", () => {
+    const climbing = buildActivitySection("climbing", allDiscoverItems);
+    const capeGreco = climbing?.trailLinks?.find((t) => t.id === "cape-greco");
+    expect(capeGreco?.nameEl).toBe("Ακρωτήρι Γκρέκο");
+    // A trail without a native name stays EN via getLocalizedName's fallback
+    // (behavioral, not data absence — sourcing a Greek name later must not
+    // fail this test, b83).
+    const pentadaktylos = climbing?.trailLinks?.find((t) => t.id === "pentadaktylos");
+    expect(pentadaktylos).toBeDefined();
+    expect(getLocalizedName(pentadaktylos!, "el")).toBe(pentadaktylos!.name);
   });
 });

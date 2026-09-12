@@ -11,7 +11,7 @@ import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { CTA, EMPTY_STATE, LAYOUT } from "@/lib/design-tokens";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { sortDiscoverItemsByInterests } from "@/lib/personalization";
-import { filterToSectionId } from "@/lib/discover-sections";
+import { filterToSectionId, pinFamilyLead } from "@/lib/discover-sections";
 import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { getPlanDayIndex, getPlanDayMapFocus } from "@/lib/discover-map-focus";
@@ -81,10 +81,15 @@ export default function DiscoverClient({
         : sections.filter((s) => s.id === filter)
       : sections;
     if (!hydrated || prefs.interests.length === 0 || isActivity) return raw;
-    return raw.map((section) => ({
-      ...section,
-      items: sortDiscoverItemsByInterests(section.items, prefs.interests),
-    }));
+    return raw.map((section) => {
+      const personalized = sortDiscoverItemsByInterests(section.items, prefs.interests);
+      // The family lane's lead is editorial (D6): re-pin it so interest
+      // sorting only reorders the unranked remainder.
+      return {
+        ...section,
+        items: section.id === "family" ? pinFamilyLead(personalized) : personalized,
+      };
+    });
   }, [sections, activitySection, filter, sectionExists, isActivity, hydrated, prefs.interests]);
 
   const [viewMode, setViewMode] = useState<"list" | "map">(urlViewMap ? "map" : "list");
@@ -117,7 +122,16 @@ export default function DiscoverClient({
     s.items.some((i) => "type" in i && i.type === "winery")
   );
 
-  const totalCount = sectionsToShow.reduce((sum, s) => sum + s.items.length, 0);
+  // The map plots a filtered section's trailLinks (batch 81/83), so on the
+  // map view the announced/filter-bar count includes those pins — otherwise
+  // the SR announcement says N while the map heading shows N+trails.
+  const mapShowsTrailLinks = sectionExists && sectionsToShow.length === 1;
+  const trailLinkCount = mapShowsTrailLinks
+    ? sectionsToShow.reduce((sum, s) => sum + (s.trailLinks?.length ?? 0), 0)
+    : 0;
+  const totalCount =
+    sectionsToShow.reduce((sum, s) => sum + s.items.length, 0) +
+    (viewMode === "map" ? trailLinkCount : 0);
   const activeSection = isActivity
     ? activitySection
     : sections.find((s) => s.id === filter);
@@ -326,7 +340,7 @@ export default function DiscoverClient({
           <div role="tabpanel" aria-labelledby="discover-tab-map">
             <DiscoverMapPanel
               sections={sectionsToShow}
-              isActivityFilter={isActivity}
+              filterResolved={sectionExists}
               planFocus={planFocus}
               focusMode={mapFocusMode}
               onFocusModeChange={handleFocusModeChange}

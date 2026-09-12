@@ -73,6 +73,7 @@ function placeFromId(id: string, kindOverride?: DiscoverMapPinKind): DiscoverMap
   return {
     id: place.id,
     name: place.name,
+    nameEl: place.nameEl,
     href,
     region: place.region,
     lat: coords.lat,

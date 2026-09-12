@@ -1,6 +1,6 @@
 # Owner decisions — everything that still needs a signature, not a keyboard
 
-*Companion to `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` (batch 75). As of batches 56–74, every code-shaped item in the audit register is shipped, reviewed (two adversarial code passes, a claims audit, three full e2e battery runs, a security sweep) and gated in CI. What remains is listed here as one answerable decision each — with a recommendation, and with what ships the moment it's decided. Ordered by how much each decision unblocks.*
+*Companion to `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` (batch 75). As of batches 56–83, every code-shaped item in the audit register is shipped, reviewed (repeated adversarial code passes and claims audits, four full e2e battery runs, a security sweep) and locally verified; server-side CI gating remains unavailable under D0. What remains is listed here as one answerable decision each — with a recommendation, and with what ships the moment it's decided. Ordered by how much each decision unblocks.*
 
 ## D0 — Restore GitHub Actions (discovered during PR #236; blocks all CI value)
 
@@ -8,7 +8,7 @@
 
 **The decision:** check those two settings pages and restore Actions.
 
-**Until then:** the only real verification is the local pre-push battery every commit on this branch went through (three full 117-test suite runs included). Once restored, re-run the workflow on the latest commit to get the first server-side green since August.
+**Until then:** the only real verification is the local pre-push battery every commit on this branch went through (four full-suite runs included; the suite now counts 119 e2e tests). Once restored, re-run the workflow on the latest commit to get the first server-side green since August.
 
 ## D1 — Provision the real mailbox (AUD-67; unblocks AUD-81 residual)
 
@@ -46,20 +46,9 @@
 
 The list was checked against press coverage of the WiZ 50 Best Restaurants 2025 (announced 27 January 2026, Hilton Nicosia; the guide's own site is unreachable from this build environment, so coverage was used): **The Polo #1** for the second consecutive year (matches our data), **COR gastronomy #2** (our claim was correct — kept), **Seasons Oriental 4th** (our "#2 for 2025" and "top 3" were the errors). Correction shipped ×7 locales using the house "top 5" phrasing (the wording already used for 4th–5th places). If you want the exact "#4" instead of "top 5", it's a one-line refinement — verify against cyprus.wiz-guide.com first.
 
-## D6 — Curate the family lane (AUD-58)
+## D6 — Curate the family lane (AUD-58) — **RESOLVED (batch 80, approved)**
 
-**Blocked today:** editorial — the family filter works, but the audit found its *curation* thin (which places genuinely serve the family persona, in what order).
-
-**The decision:** approve, amend, or reject the proposal below (drafted batch 76 from catalog signals — every id is a live catalog entry).
-
-**What the lane is today (the problem, made concrete):** the family filter is pure tag-matching on `bestFor` — 15 items in catalog order, of which **4 are wineries**, with **zero villages, zero trails, zero events**. A family tapping "Family-friendly" on the home page currently gets a lane whose largest curated category is wine tasting.
-
-**Proposed curation (mechanism: edit `bestFor` tags — works with the existing filter, no new code):**
-- *Keep and lead with:* `fig-tree-bay`, `nissi-beach`, `coral-bay` (calm winter beach walks), `larnaca-aliki` (the winter flamingos are the island's single best family draw in season), `choirokoitia` (UNESCO round huts — genuinely engaging for children), `athalassa-forest-park`, `germasogeia-dam-paddle`, `limassol-marina`.
-- *Add the missing categories:* an easy short trail or two from the catalog's under-4km easy set (`kavos-trail` 1.2km, `livadi-trail` 1.5km, `dwarf-oaks` 2km, `xyliatos-dam` 4km are the candidates); craft-and-stroll villages `omodos` and `lefkara` (lace/silver workshops, car-free cores); the December `kalopanagiotis` Christmas Village event while it runs.
-- *Demote:* remove the family tag from the four wineries (`hadjipavlou`, `adege`, `kalamos`, `sterna-boutique`) unless a specific one has real children's facilities you know of — a family lane led by tasting rooms is the thin curation AUD-58 flagged.
-
-**Ships when approved (≈1 batch):** tag edits in `src/data/` flow through the existing filter and all 7 locales automatically.
+The batch-76 proposal shipped, with one diagnosis upgrade found during implementation: three of the four "family wineries" were a **predicate artifact** — the filter substring-matched `"famil"`, so the *ownership* tokens "Family heritage" / "Family-run" / "Family-run feel" had been putting tasting rooms in the children's lane; only sterna-boutique carried the real audience tag. What shipped: the predicate now matches audience tokens exactly (ownership chips stay truthful on winery pages and in search); `lefkara`, `omodos` and `kalopanagiotis` (the Christmas Village host — the village carries the December intent since events aren't lane-reachable) joined via the `"Families"` tag; sterna-boutique's tag removed per the proposal; the lane leads with the flamingos and the UNESCO round huts; and the easy short trails (Kavos 1.2 km, Livadi 1.5 km, Dwarf Oaks 2 km) render as chips through the section's existing trail-links slot. All 7 locales automatic; three new unit tests pin membership, order and chips. The one recorded limit — the family map view not plotting the trail markers — closed in batch 81 (the filtered map view now plots a section's trails).
 
 ## D7 — Per-guide price quotes (AUD-23 residual) — *supply*
 
@@ -75,7 +64,7 @@ Real partner photography for listing pages (§5 ledger). Nothing to build until 
 
 ## The pull request
 
-Batches 56–76 stand verified end-to-end on `claude/ux-ui-audit-personas-60kdnz`: catalog 7×3,947, strict i18n coverage 0/0 (blind spot measured each run), 992 unit tests, 117 e2e tests, security-swept. **The PR opens on your word — none of D1–D9 blocks it.**
+**PR #236 (batches 56–79) is merged to `main`.** The follow-up, **PR #237, carries batches 80–83** (the D6 family-lane curation, its review fixes, the name-localization sweep, and the post-arc review remediation) — approved by automated review, every thread resolved, sealed by a full-battery run against its head. **It merges on your word.** Reminder: none of the merges has had a server-side CI run — D0 above is still the standing gap.
 
 ## Closed by design (no decision needed)
 

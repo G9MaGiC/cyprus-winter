@@ -1,4 +1,5 @@
 import { getPlanItemById as getPlaceById, type PlanItem } from "@/data/plan-items";
+import { getLocalizedName } from "@/lib/localize";
 import type { ItineraryDays } from "@/lib/itinerary-share";
 
 const NAMED_ALL_MAX = 3;
@@ -19,8 +20,16 @@ export type PlanSharePlacesLineLabels = {
   more: (a: string, b: string, count: number) => string;
 };
 
-/** Ordered unique places from an itinerary, for share titles and OG copy. */
-export function buildPlanSharePreview(days: ItineraryDays | null): PlanSharePreview | null {
+/**
+ * Ordered unique places from an itinerary, for share titles and OG copy.
+ * Pass `locale` for user-visible share text (names localize per the house
+ * getLocalizedName pattern); omit it for metadata/OG, which keeps EN base
+ * names per the register contract.
+ */
+export function buildPlanSharePreview(
+  days: ItineraryDays | null,
+  locale?: string
+): PlanSharePreview | null {
   if (!days) return null;
 
   const seen = new Set<string>();
@@ -45,7 +54,7 @@ export function buildPlanSharePreview(days: ItineraryDays | null): PlanSharePrev
       ? places
       : places.slice(0, NAMED_WITH_REMAINDER);
   return {
-    named: namedPlaces.map((p) => p.name),
+    named: namedPlaces.map((p) => getLocalizedName(p, locale ?? "en")),
     extraCount: Math.max(0, places.length - namedPlaces.length),
     placeCount: places.length,
     dayCount,

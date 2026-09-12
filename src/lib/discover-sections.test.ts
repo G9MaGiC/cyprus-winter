@@ -9,6 +9,7 @@ import {
   isAccessibleFriendly,
   isFamilyFriendly,
   isOffBeatenPath,
+  pinFamilyLead,
   PRACTICAL_DISCOVER_FILTERS,
   toDiscoverCardItem,
 } from "@/lib/discover-sections";
@@ -33,6 +34,75 @@ describe("buildDiscoverSections", () => {
     expect(family?.items.some((item) => item.id === "nissi-beach")).toBe(true);
     for (const item of family!.items) {
       expect(isFamilyFriendly(item), item.id).toBe(true);
+    }
+  });
+
+  it("family lane is curated: audience tokens only, wineries out, villages in (AUD-58)", () => {
+    const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
+    const ids = new Set(family.items.map((i) => i.id));
+
+    // Craft villages + the Christmas Village host join via the "Families" tag.
+    expect(ids.has("lefkara")).toBe(true);
+    expect(ids.has("omodos")).toBe(true);
+    expect(ids.has("kalopanagiotis")).toBe(true);
+
+    // Ownership tokens ("Family-run", "Family heritage") are not audience
+    // claims — the old substring predicate put these tasting rooms in the
+    // children's lane; sterna-boutique's tag edit removes the fourth.
+    expect(ids.has("kalamos")).toBe(false);
+    expect(ids.has("hadjipavlou")).toBe(false);
+    expect(ids.has("adege")).toBe(false);
+    expect(ids.has("sterna-boutique")).toBe(false);
+  });
+
+  it("family lane leads with the curated order, rest in catalog order", () => {
+    const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
+    expect(family.items.slice(0, 5).map((i) => i.id)).toEqual([
+      "larnaca-aliki",
+      "choirokoitia",
+      "fig-tree-bay",
+      "nissi-beach",
+      "coral-bay",
+    ]);
+  });
+
+  it("pinFamilyLead restores the curated lead over a personalization-shuffled list", () => {
+    // The client re-sorts sections by interest score after hydration (PR #237
+    // Codex finding); the family section re-pins afterwards. Simulate a
+    // culture-heavy shuffle that pushed the lead items down.
+    const shuffled = [
+      { id: "choirokoitia" },
+      { id: "kalopanagiotis" },
+      { id: "omodos" },
+      { id: "larnaca-aliki" },
+      { id: "limassol-marina" },
+      { id: "nissi-beach" },
+      { id: "fig-tree-bay" },
+    ];
+    const pinned = pinFamilyLead(shuffled).map((i) => i.id);
+    expect(pinned).toEqual([
+      "larnaca-aliki",
+      "choirokoitia",
+      "fig-tree-bay",
+      "nissi-beach",
+      // Unranked remainder keeps its (personalized) relative order.
+      "kalopanagiotis",
+      "omodos",
+      "limassol-marina",
+    ]);
+    // Pure: the input list is not mutated.
+    expect(shuffled[0].id).toBe("choirokoitia");
+  });
+
+  it("family lane carries easy short trails via the trailLinks slot", () => {
+    const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
+    const trailIds = family.trailLinks?.map((t) => t.id) ?? [];
+    // Exact set: the builder silently drops unresolved ids, so a renamed
+    // trail must fail here, not shrink the lane's chips unnoticed (b83).
+    expect(trailIds).toEqual(["kavos-trail", "livadi-trail", "dwarf-oaks"]);
+    for (const link of family.trailLinks ?? []) {
+      expect(link.href).toBe(`/trails/${link.id}`);
+      expect(link.name.length).toBeGreaterThan(0);
     }
   });
 

@@ -11,7 +11,9 @@ import {
 import { ACTIVITY_PLACE_IDS_SET } from "@/data/activity-places";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
+import { trails } from "@/data/trails";
 import { LOCAL_WINTER_PICK_IDS } from "@/data/local-winter-picks";
+import { slugifyBestFor } from "@/lib/best-for-shared";
 
 export {
   PRACTICAL_DISCOVER_FILTERS,
@@ -23,7 +25,7 @@ export type DiscoverSection = {
   id: string;
   title: string;
   items: DiscoverItem[];
-  trailLinks?: { id: string; name: string; href: string }[];
+  trailLinks?: { id: string; name: string; nameEl?: string; href: string }[];
   seeMore?: { href: string; labelKey: string };
 };
 
@@ -118,13 +120,16 @@ export const filterToSectionId: Record<string, string> = {
   "off-beaten-path": "hidden",
 };
 
+/**
+ * Audience tokens only (AUD-58, batch 80). The old "famil" substring pulled
+ * *ownership* tokens ("Family-run", "Family heritage") into the children's
+ * lane — tasting rooms are not family outings. Exact slug match keeps those
+ * chips truthful on winery pages while the lane stays curated.
+ */
+const FAMILY_AUDIENCE_SLUGS = new Set(["families", "family-friendly"]);
+
 export function isFamilyFriendly(item: { bestFor?: string[] }): boolean {
-  return (
-    item.bestFor?.some(
-      (b) =>
-        b.toLowerCase().includes("famil") || b.toLowerCase().includes("family")
-    ) ?? false
-  );
+  return item.bestFor?.some((b) => FAMILY_AUDIENCE_SLUGS.has(slugifyBestFor(b))) ?? false;
 }
 
 export function isAccessibleFriendly(item: {
@@ -172,13 +177,58 @@ export function isOffBeatenPath(item: { bestFor?: string[] }): boolean {
   );
 }
 
+/**
+ * Curated family-lane lead (AUD-58, batch 80): winter flamingos and the UNESCO
+ * round huts first, then the calm beaches; everything else keeps catalog order
+ * via the stable sort. Reordering the source arrays would move the Coasts lane
+ * and force a plan-items regeneration — this doesn't.
+ */
+const FAMILY_LEAD_IDS = [
+  "larnaca-aliki",
+  "choirokoitia",
+  "fig-tree-bay",
+  "nissi-beach",
+  "coral-bay",
+];
+
+/** Short, easy trails a family can actually finish — rendered as chips via the
+    section's `trailLinks` slot (trails carry no bestFor, so they can't join
+    the lane itself). */
+const FAMILY_TRAIL_IDS = ["kavos-trail", "livadi-trail", "dwarf-oaks"];
+
+const familyLeadRank = (id: string) => {
+  const i = FAMILY_LEAD_IDS.indexOf(id);
+  return i === -1 ? FAMILY_LEAD_IDS.length : i;
+};
+
+/**
+ * Re-applies the curated family lead as a stable sort — the single source of
+ * truth for the lane's order. The client's interest personalization re-sorts
+ * sections after hydration; the family section must call this afterwards so
+ * personalization only reorders the unranked remainder.
+ */
+export function pinFamilyLead<T extends { id: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => familyLeadRank(a.id) - familyLeadRank(b.id));
+}
+
 export function buildDiscoverSections(
   allDiscoverItems: DiscoverItem[]
 ): DiscoverSection[] {
   const coastNature = natureSites.filter((item) => !ACTIVITY_PLACE_IDS_SET.has(item.id));
   const coastsItems = [...beaches, ...coastNature];
   const wineAndFoodItems = [...wineries, ...restaurants];
-  const familyItems = allDiscoverItems.filter(isFamilyFriendly);
+  const familyItems = pinFamilyLead(allDiscoverItems.filter(isFamilyFriendly));
+  const familyTrailLinks = FAMILY_TRAIL_IDS.map((id) => {
+    const t = trails.find((tr) => tr.id === id);
+    if (!t) return null;
+    const link: { id: string; name: string; nameEl?: string; href: string } = {
+      id: t.id,
+      name: t.name,
+      nameEl: t.nameEl,
+      href: `/trails/${t.id}`,
+    };
+    return link;
+  }).filter((link): link is NonNullable<typeof link> => link != null);
   const accessibleItems = allDiscoverItems.filter(isAccessibleFriendly);
   const localWinterItems = allDiscoverItems.filter((item) =>
     (LOCAL_WINTER_PICK_IDS as readonly string[]).includes(item.id)
@@ -194,7 +244,7 @@ export function buildDiscoverSections(
     { id: "village", title: "village", items: villages },
     { id: "wine", title: "wine", items: wineAndFoodItems },
     { id: "monastery", title: "monastery", items: monasteries },
-    { id: "family", title: "family", items: familyItems },
+    { id: "family", title: "family", items: familyItems, trailLinks: familyTrailLinks },
     { id: "accessible", title: "accessible", items: accessibleItems },
     { id: "local", title: "local", items: localWinterItems },
     { id: "hidden", title: "hidden", items: hiddenGemsItems },

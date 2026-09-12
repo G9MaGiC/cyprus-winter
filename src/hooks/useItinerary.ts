@@ -7,6 +7,7 @@ import { getPlanItemById as getPlaceById, type PlanItem } from "@/data/plan-item
 import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { buildPlanIcs, downloadPlanIcs } from "@/lib/plan-ics";
 import { buildPlanShareCopy, buildPlanSharePreview } from "@/lib/plan-share-preview";
+import { getLocalizedName } from "@/lib/localize";
 import { toAbsoluteUrl } from "@/lib/site-url";
 import { localizedPathname } from "@/lib/seo-locale-urls";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
@@ -200,7 +201,7 @@ export function useItinerary() {
       lines.push(tPlanClip("dayLabel", { day: d }));
       for (const id of items) {
         const p = getPlace(id);
-        if (p) lines.push(`  • ${p.name} (${p.region})`);
+        if (p) lines.push(`  • ${getLocalizedName(p, locale)} (${p.region})`);
       }
       lines.push("");
     }
@@ -224,7 +225,7 @@ export function useItinerary() {
   // Locale-prefixed: a Hebrew share message must land its recipient on the
   // Hebrew plan page, not the English one (AUD E2-02).
   const sharePath = localizedPathname(hasContent ? buildPlanSharePath(days) : "/plan", locale);
-  const shareCopy = buildPlanShareCopy(buildPlanSharePreview(hasContent ? days : null), {
+  const shareCopy = buildPlanShareCopy(buildPlanSharePreview(hasContent ? days : null, locale), {
     two: (a, b) => tShare("previewLineTwo", { a, b }),
     three: (a, b, c) => tShare("previewLineThree", { a, b, c }),
     more: (a, b, count) => tShare("previewLineMore", { a, b, count }),

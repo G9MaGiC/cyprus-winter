@@ -101,4 +101,27 @@ test.describe("Discover filters", () => {
     await expect(legend).toBeVisible({ timeout: 20_000 });
     await expect(legend.getByText(/^Trail$|^Szlak$|^Μονοπάτι$|^Sentier$/i)).toBeVisible();
   });
+
+  test("family filter on map includes trail legend", async ({ page }) => {
+    // Batch 81: the family lane's trailLinks (Kavos/Livadi/Dwarf Oaks) plot
+    // on the filtered map view — same single-section gate the activity
+    // filters use.
+    await gotoStable(page, "/discover?view=map&filter=family");
+    await expect(page.getByRole("main")).toBeVisible();
+    const mapTab = page.getByRole("tab", { name: /^Map$|^Karte$|^Mapa$|^Χάρτης$/i });
+    await expect(mapTab).toBeVisible({ timeout: 20_000 });
+    if ((await mapTab.getAttribute("aria-selected")) !== "true") {
+      await mapTab.click();
+    }
+    await expect(mapTab).toHaveAttribute("aria-selected", "true", { timeout: 20_000 });
+    const mapSection = page.getByRole("region", {
+      name: /Places on map|Orte auf der Karte|Μέρη στον χάρτη|Miejsca na mapie/i,
+    });
+    await expect(mapSection).toBeVisible({ timeout: 20_000 });
+    const legend = mapSection.getByRole("list", {
+      name: /Map marker types|Markertypen|Τύποι δεικτών|Typy znaczników/i,
+    });
+    await expect(legend).toBeVisible({ timeout: 20_000 });
+    await expect(legend.getByText(/^Trail$|^Szlak$|^Μονοπάτι$|^Sentier$/i)).toBeVisible();
+  });
 });

@@ -1173,7 +1173,7 @@ export const wineries: Winery[] = [
     type: "winery",
     highlights: ["2,000-year cave", "Koralli", "Kelaidonis"],
     image: "/images/cyprus/cyprus-winery-troodos.jpg",
-    bestFor: ["Akamas loop", "Families", "Unique experience"],
+    bestFor: ["Akamas loop", "Unique experience"],
     wineRoute: "Akamas",
     tastingInfo: "Tastings €5; olives, bread, cheese. Cave and museum tours.",
     openingHours: "9:30–18:00 in season; call ahead Nov–Mar.",

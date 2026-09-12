@@ -29,7 +29,8 @@ const LEGEND_DOT: Record<DiscoverMapPinKind, string> = {
 
 type DiscoverMapPanelProps = {
   sections: DiscoverCardSection[];
-  isActivityFilter: boolean;
+  /** True when the current filter resolved to the single section shown. */
+  filterResolved: boolean;
   planFocus: PlanDayMapFocus;
   focusMode: boolean;
   onFocusModeChange: (enabled: boolean) => void;
@@ -38,7 +39,7 @@ type DiscoverMapPanelProps = {
 
 export default function DiscoverMapPanel({
   sections,
-  isActivityFilter,
+  filterResolved,
   planFocus,
   focusMode,
   onFocusModeChange,
@@ -49,9 +50,13 @@ export default function DiscoverMapPanel({
   const places = useMemo(
     () =>
       buildDiscoverMapPlacesFromSections(sections, {
-        includeTrailLinks: isActivityFilter,
+        // A resolved single-section (filtered) view plots its trailLinks —
+        // activity and family lanes alike (batches 81/83); the unfiltered
+        // multi-section map stays trail-free, including the edge where an
+        // activity key resolves to no section and the view falls back to all.
+        includeTrailLinks: filterResolved && sections.length === 1,
       }),
-    [sections, isActivityFilter]
+    [sections, filterResolved]
   );
 
   const legendKinds = useMemo(() => activeMapPinKinds(places), [places]);

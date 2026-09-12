@@ -226,7 +226,7 @@ const SECTION_TITLE_KEYS: Record<ActivityFilterKey, string> = {
 };
 
 export type ActivityDiscoverSection = DiscoverSection & {
-  trailLinks?: { id: string; name: string; href: string }[];
+  trailLinks?: { id: string; name: string; nameEl?: string; href: string }[];
   seeMore?: { href: string; labelKey: string };
 };
 
@@ -246,9 +246,17 @@ export function buildActivitySection(
     .map((id) => {
       const t = trails.find((tr) => tr.id === id);
       if (!t) return null;
-      return { id: t.id, name: t.name, href: `/trails/${t.id}` };
+      // nameEl rides along so chip renderers can use getLocalizedName like
+      // every card class does (batch 82).
+      const link: { id: string; name: string; nameEl?: string; href: string } = {
+        id: t.id,
+        name: t.name,
+        nameEl: t.nameEl,
+        href: `/trails/${t.id}`,
+      };
+      return link;
     })
-    .filter((link): link is { id: string; name: string; href: string } => link != null);
+    .filter((link): link is NonNullable<typeof link> => link != null);
 
   return {
     id: key,

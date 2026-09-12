@@ -9,6 +9,7 @@ import { localizeCyclingRoutes } from "@/lib/cycling-route-content";
 import { HOME, LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import { localizeDiscoverContent } from "@/lib/discover-content";
+import { getLocalizedName } from "@/lib/localize";
 import PageHeader from "@/components/PageHeader";
 import CyclingFooter from "@/app/(padded)/cycling/CyclingFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -38,6 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function CyclingPage() {
+  const locale = await getLocale();
   const [tNav, tCommon, tCycling] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
@@ -111,7 +113,7 @@ export default async function CyclingPage() {
             {trailLinks.map((trail) => (
               <li key={trail.id}>
                 <AppLink href={trail.href} className={CTA.secondaryCompact}>
-                  {trail.name}
+                  {getLocalizedName(trail, locale)}
                 </AppLink>
               </li>
             ))}
