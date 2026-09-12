@@ -27,6 +27,8 @@ export type Restaurant = {
   localSecret?: string;
   /** Related place IDs (trail, winery, attraction) for day combos */
   combineWith?: string[];
+  /** Quarantined records stay in source history but out of public surfaces. */
+  isPublic?: boolean;
   /** € | €€ | €€€ */
   priceRange?: string;
   image?: string;
@@ -34,10 +36,6 @@ export type Restaurant = {
   transport?: string;
   /** Parking info */
   parking?: string;
-  /** False keeps an unverified record out of public and booking surfaces. */
-  isPublic?: boolean;
-  sourceUrl?: string;
-  lastVerifiedAt?: string;
   /** Dining venues (restaurants, cafés, bars) at multi-venue locations */
   diningVenues?: string[];
   /** Shops and boutiques at multi-venue locations */
@@ -246,6 +244,7 @@ const restaurantRecords: Restaurant[] = [
   },
   {
     id: "santo-restaurant",
+    isPublic: false,
     name: "Santo Restaurant",
     region: "Lemesos",
     description:
@@ -262,9 +261,6 @@ const restaurantRecords: Restaurant[] = [
     latitude: 34.72,
     longitude: 33.05,
     priceRange: "€€",
-    isPublic: false,
-    sourceUrl: "https://santowines.gr/visit-us/",
-    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kouklia-cafe",
@@ -774,7 +770,8 @@ const restaurantRecords: Restaurant[] = [
   },
 ];
 
+/** Quarantine (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md): records marked
+    isPublic: false stay in source history but out of every public surface. */
 export const restaurants: Restaurant[] = restaurantRecords.filter(
   (restaurant) => restaurant.isPublic !== false
 );
-
