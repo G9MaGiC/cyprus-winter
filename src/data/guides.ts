@@ -18,11 +18,11 @@ export type Guide = {
   bookingUrl?: string;
   partnerEmail?: string;
   isVerified?: boolean;
-  /** False keeps an unverified draft record out of public and booking surfaces. */
+  partnerLeadFeeEur?: number;
+  /** Quarantined records stay in source history but out of public surfaces. */
   isPublic?: boolean;
   sourceUrl?: string;
   lastVerifiedAt?: string;
-  partnerLeadFeeEur?: number;
 };
 
 export const guides: Guide[] = [

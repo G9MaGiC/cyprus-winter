@@ -1886,6 +1886,9 @@ const wineryRecords: Winery[] = [
   },
 ];
 
+/** Quarantine (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md): records marked
+    isPublic: false stay in source history but out of every public surface —
+    lists, detail routes, structured data, sitemap, and booking acceptance. */
 export const wineries: Winery[] = wineryRecords.filter((winery) => winery.isPublic !== false);
 
 export function getWineryById(id: string): Winery | undefined {

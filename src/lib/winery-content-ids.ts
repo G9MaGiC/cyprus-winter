@@ -9,10 +9,9 @@
     stop plus the five richest-content non-partner wineries by visitor
     relevance. Extend alongside a catalog patch — winery-content.test.ts
     guards every id × field × locale. */
-// 2026-09-02 quarantine (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md):
-// 27 records left the public catalog, so their ids leave this registry.
-// Their overlay strings stay in the locale catalogs on purpose — restoring a
-// record after re-verification restores its translations with no catalog work.
+// Quarantined records (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md) leave this
+// set while non-public; their overlay strings stay in the locale catalogs so
+// restoring a record restores its translations.
 export const LOCALIZED_WINERY_IDS: ReadonlySet<string> = new Set([
   // Slice 1 — partner pilot
   "tsiakkas",
