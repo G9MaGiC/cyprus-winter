@@ -13,7 +13,50 @@ import { resetPartnerOverlaysForTests } from "@/lib/partner-overlay";
 import { sendBookingStatusEmail } from "@/lib/email";
 
 const secret = "partner-portal-secret-16";
-const tsiakkasEmail = "bookings+tsiakkas@cyprus-winter.example";
+const fixtureEmail = "bookings@fixture-winery.example.org";
+
+/**
+ * Fixture partners stand in for the data layer: since the 2026-09-02
+ * verification pass (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md) the live
+ * catalog carries zero verified partners. Portal mechanics are pinned against
+ * fixtures with deliverable (non-placeholder) contact domains.
+ */
+vi.mock("@/data/wineries", () => {
+  const list = [
+    {
+      id: "fixture-winery",
+      name: "Fixture Winery",
+      region: "Lemesos",
+      type: "winery",
+      isVerified: true,
+      isPublic: true,
+      isBookable: true,
+      bookingUrl: "https://fixture-winery.example.org/visit",
+      partnerEmail: "bookings@fixture-winery.example.org",
+      partnerLeadFeeEur: 5,
+    },
+    {
+      id: "other-winery",
+      name: "Other Winery",
+      region: "Pafos",
+      type: "winery",
+      isVerified: true,
+      isPublic: true,
+      isBookable: true,
+      bookingUrl: "https://other-winery.example.org/visit",
+      partnerEmail: "bookings@other-winery.example.org",
+    },
+  ];
+  return {
+    wineries: list,
+    getWineryById: (id: string) => list.find((w) => w.id === id),
+  };
+});
+
+vi.mock("@/data/guides", () => ({
+  guides: [],
+  getGuideById: () => undefined,
+}));
 
 vi.mock("@/lib/email", () => ({
   sendBookingConfirmation: vi.fn().mockResolvedValue(false),
@@ -56,7 +99,7 @@ describe("partner portal API", () => {
   it("rejects session login for the wrong secret or unknown email", async () => {
     const wrong = await postSession(
       jsonReq("http://localhost:3000/api/partner/session", "POST", {
-        email: tsiakkasEmail,
+        email: fixtureEmail,
         secret: "nope",
       })
     );
@@ -74,7 +117,7 @@ describe("partner portal API", () => {
   it("sets an HttpOnly partner cookie for a verified email", async () => {
     const res = (await postSession(
       jsonReq("http://localhost:3000/api/partner/session", "POST", {
-        email: tsiakkasEmail,
+        email: fixtureEmail,
         secret,
       })
     )) as NextResponse;
@@ -91,9 +134,9 @@ describe("partner portal API", () => {
         headers: { "content-type": "application/json", "x-forwarded-for": "203.0.113.21" },
         body: JSON.stringify({
           type: "winery_tasting",
-          providerId: "tsiakkas",
+          providerId: "fixture-winery",
           date: "2099-04-01",
-          idempotencyKey: "partner-portal-tsiakkas-001",
+          idempotencyKey: "partner-portal-fixture-001",
           partySize: 2,
           guestEmail: "guest-a@example.com",
           guestName: "Guest A",
@@ -106,9 +149,9 @@ describe("partner portal API", () => {
         headers: { "content-type": "application/json", "x-forwarded-for": "203.0.113.22" },
         body: JSON.stringify({
           type: "winery_tasting",
-          providerId: "santo",
+          providerId: "other-winery",
           date: "2099-04-02",
-          idempotencyKey: "partner-portal-santo-001",
+          idempotencyKey: "partner-portal-other-001",
           partySize: 2,
           guestEmail: "guest-b@example.com",
           guestName: "Guest B",
@@ -117,16 +160,16 @@ describe("partner portal API", () => {
     );
     const santoBooking = ((await santoRes.json()) as { booking: { id: string } }).booking;
 
-    const tsiakkas = findVerifiedPartnerByEmail(tsiakkasEmail)!;
-    const cookie = createPartnerSessionToken(tsiakkas, secret);
+    const partner = findVerifiedPartnerByEmail(fixtureEmail)!;
+    const cookie = createPartnerSessionToken(partner, secret);
 
     const list = await getBookings(
       jsonReq("http://localhost:3000/api/partner/bookings", "GET", undefined, cookie, "203.0.113.23")
     );
     expect(list.status).toBe(200);
     const listed = (await list.json()) as { bookings: Array<{ providerId: string }> };
-    expect(listed.bookings.every((b) => b.providerId === "tsiakkas")).toBe(true);
-    expect(listed.bookings.some((b) => b.providerId === "santo")).toBe(false);
+    expect(listed.bookings.every((b) => b.providerId === "fixture-winery")).toBe(true);
+    expect(listed.bookings.some((b) => b.providerId === "other-winery")).toBe(false);
 
     const forbidden = await patchBookingById(
       jsonReq(
@@ -148,9 +191,9 @@ describe("partner portal API", () => {
         headers: { "content-type": "application/json", "x-forwarded-for": "203.0.113.25" },
         body: JSON.stringify({
           type: "winery_tasting",
-          providerId: "tsiakkas",
+          providerId: "fixture-winery",
           date: "2099-04-03",
-          idempotencyKey: "partner-portal-tsiakkas-002",
+          idempotencyKey: "partner-portal-fixture-002",
           partySize: 3,
           guestEmail: "guest-c@example.com",
           guestName: "Guest C",
@@ -161,8 +204,8 @@ describe("partner portal API", () => {
     const booking = ((await created.json()) as { booking: { id: string; status: string } }).booking;
     expect(booking.status).toBe("pending");
 
-    const tsiakkas = findVerifiedPartnerByEmail(tsiakkasEmail)!;
-    const cookie = createPartnerSessionToken(tsiakkas, secret);
+    const partner = findVerifiedPartnerByEmail(fixtureEmail)!;
+    const cookie = createPartnerSessionToken(partner, secret);
     const patched = await patchBookingById(
       jsonReq(
         `http://localhost:3000/api/partner/bookings/${booking.id}`,
@@ -194,9 +237,9 @@ describe("partner portal API", () => {
   });
 
   it("stores hours and a local hero path on the partner overlay", async () => {
-    const tsiakkas = findVerifiedPartnerByEmail(tsiakkasEmail)!;
-    const cookie = createPartnerSessionToken(tsiakkas, secret);
-    const before = resolveWineryImage("tsiakkas");
+    const partner = findVerifiedPartnerByEmail(fixtureEmail)!;
+    const cookie = createPartnerSessionToken(partner, secret);
+    const before = resolveWineryImage("fixture-winery");
     const res = await patchProfile(
       jsonReq(
         "http://localhost:3000/api/partner/profile",
@@ -210,14 +253,14 @@ describe("partner portal API", () => {
       )
     );
     expect(res.status).toBe(200);
-    expect(resolveWineryImage("tsiakkas")).toBe("/images/cyprus/winery-tsiakkas.jpg");
-    expect(resolveWineryImage("tsiakkas")).not.toBe("");
+    expect(resolveWineryImage("fixture-winery")).toBe("/images/cyprus/winery-tsiakkas.jpg");
+    expect(resolveWineryImage("fixture-winery")).not.toBe("");
     expect(before).toBeTruthy();
   });
 
   it("does not treat a partner cookie as guest booking auth", async () => {
-    const tsiakkas = findVerifiedPartnerByEmail(tsiakkasEmail)!;
-    const cookie = createPartnerSessionToken(tsiakkas, secret);
+    const partner = findVerifiedPartnerByEmail(fixtureEmail)!;
+    const cookie = createPartnerSessionToken(partner, secret);
     const guest = await getGuestBookings(
       new Request("http://localhost:3000/api/bookings", {
         headers: {
@@ -230,8 +273,8 @@ describe("partner portal API", () => {
   });
 
   it("rejects an image URL that is not a local cyprus asset", async () => {
-    const tsiakkas = findVerifiedPartnerByEmail(tsiakkasEmail)!;
-    const cookie = createPartnerSessionToken(tsiakkas, secret);
+    const partner = findVerifiedPartnerByEmail(fixtureEmail)!;
+    const cookie = createPartnerSessionToken(partner, secret);
     const res = await patchProfile(
       jsonReq(
         "http://localhost:3000/api/partner/profile",

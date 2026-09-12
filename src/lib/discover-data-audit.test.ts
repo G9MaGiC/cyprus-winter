@@ -207,15 +207,11 @@ describe("discover data audit — factual anchors (wineries & trails)", () => {
     expect(kakopetria?.localSecret).toMatch(/Galata/);
   });
 
-  it("Silikou Savvas remains on Commandaria wine route", async () => {
-    const { wineries } = await import("@/data/wineries");
-    expect(wineries.find((w) => w.id === "savvas")?.wineRoute).toBe("Commandaria");
-  });
-
-  it("Omodos Komos is Krasochoria not Commandaria zone", async () => {
-    const { wineries } = await import("@/data/wineries");
-    expect(wineries.find((w) => w.id === "komos")?.wineRoute).toBe("Krasochoria");
-  });
+  // The per-record wine-route zone anchors (savvas → Commandaria, komos →
+  // Krasochoria) retired with the 2026-09-02 quarantine — both records left
+  // the public catalog (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md) but stay
+  // in source history with their corrections. Zone correctness on public
+  // records is covered generically by the route-page match guard above.
 });
 
 describe("discover data audit — wine routes & events", () => {
@@ -343,15 +339,12 @@ describe("discover data audit — factual anchors (activity)", () => {
       "palaipafos",
       "buffavento",
       "panagia-tou-araka",
-      "savvas",
       "ayii-anargyri",
       "silikou-museum",
       "lady-mile-windsurf",
       "larnaca-village-coastal-cycle",
       "louvaras",
       "kato-platres",
-      "adege",
-      "yiannis",
       "hadjicharalambous",
       "papaioannou",
       "latsi-harbour",
