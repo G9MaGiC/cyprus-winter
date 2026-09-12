@@ -12,8 +12,9 @@ export type Winery = {
   winterOpen?: boolean;
   /** Book tasting / tour: external URL */
   bookingUrl?: string;
-  /** Contact phone (international format) */
+  /** Public business contact details, not booking-partner authorization. */
   contactPhone?: string;
+  contactEmail?: string;
   /** Buy wine online */
   shopUrl?: string;
   /** Winter-specific tip */
@@ -51,13 +52,17 @@ export type Winery = {
   transport?: string;
   /** Parking info */
   parking?: string;
+  isPublic?: boolean;
+  isBookable?: boolean;
+  sourceUrl?: string;
+  lastVerifiedAt?: string;
 };
 
 /** Standard off-season hours disclaimer — append to tastingInfo/openingHours when hours may shrink. */
 export const WINERY_OFF_SEASON_HOURS =
   "Call ahead Nov–Mar—hours often shorter off-season.";
 
-export const wineries: Winery[] = [
+const wineryRecords: Winery[] = [
   {
     id: "tsiakkas",
     name: "Tsiakkas Winery",
@@ -70,10 +75,11 @@ export const wineries: Winery[] = [
     bestFor: ["Couples", "Wine enthusiasts", "Winter tastings"],
     wineRoute: "Krasochoria",
     tastingInfo: "Guided tour & tasting Mon–Fri 12:00 & 14:00, Sat 11:00, 13:00 & 15:00. À la carte tastings by glass. Private tours from €70. Min 4 for guided.",
-    openingHours: "Mon–Fri 10:00–16:00, Sat 11:00–17:00. Closed Sun except select dates.",
+    openingHours: "Nov–Apr Mon–Fri 10:00–16:00; Sat 11:00–17:00 year-round. Closed Sundays, public holidays, and 1–6 January.",
     winterOpen: true,
-    bookingUrl: "https://tsiakkaswinery.com/experiences/",
-    contactPhone: "+357 99 244795",
+    bookingUrl: "https://tsiakkaswinery.resos.com/",
+    contactPhone: "+357 96 844111",
+    contactEmail: "visit@tsiakkaswinery.com",
     winterTip: "Heated terrace in winter. Ask about the Xynisteri lees-aged.",
     bestTimeToVisit: "Dec to Mar, 11:00–14:00. Book ahead.",
     localSecret: "They'll point you to the best halloumi in Pelendri for a proper pairing.",
@@ -83,9 +89,10 @@ export const wineries: Winery[] = [
     latitude: 34.895,
     longitude: 32.968,
     combineWith: ["omodos", "artemis", "lania"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+tsiakkas@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://tsiakkaswinery.com/contact-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "vouni-panayia",
@@ -103,6 +110,7 @@ export const wineries: Winery[] = [
     winterOpen: true,
     bookingUrl: "https://www.vounipanayiawinery.com/",
     contactPhone: "+357 99 755159",
+    contactEmail: "info@vounipanayiawinery.com",
     winterTip: "Ask for a comparative Commandaria tasting—younger and older vintages side by side.",
     bestTimeToVisit: "Dec to Feb, 2–3 hours. Combine with lunch in Panayia village.",
     localSecret: "The Panayia church has a revered icon; locals often combine a quick stop.",
@@ -112,9 +120,10 @@ export const wineries: Winery[] = [
     latitude: 34.918,
     longitude: 32.618,
     combineWith: ["pafos-mosaics", "palaipafos", "polis"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+vouni-panayia@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://www.vounipanayiawinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "zambartas",
@@ -144,9 +153,10 @@ export const wineries: Winery[] = [
       { name: "Shiraz–Lefkada", variety: "65% Shiraz, 35% Lefkada", price: "~€12–15" },
     ],
     combineWith: ["kourion", "kolossi", "governors-beach"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+zambartas@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://zambartaswineries.com/visit-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kolios",
@@ -164,6 +174,7 @@ export const wineries: Winery[] = [
     openingHours: "Winter (Oct–Feb): Mon–Sat 9am–3pm. Summer (Mar–Sep): Mon–Sat 8:30am–5pm. Sunday: private parties only (50+ guests).",
     bookingUrl: "https://www.kolioswinery.com.cy/book-a-table/",
     contactPhone: "+357 26 724090",
+    contactEmail: "kolioswinery@cytanet.com.cy",
     winterTip: "Book lunch 1–2 days ahead. Bring cash—they may not take cards. The meze is authentic village food, not tourist meze. February is quiet; the views and wine are worth the drive.",
     bestTimeToVisit: "Dec to Feb, 11am for tour and lunch. Quieter than summer; heaters indoors.",
     localSecret: "Their Persefoni (Xynisteri) and Maratheftiko are award-winners. Wines cost €5–14 at the cellar—far below retail. The Iris white, from the rare Spourtiko grape, is a standout. Ask to see the underground cellar; the natural spring runs through it.",
@@ -182,9 +193,10 @@ export const wineries: Winery[] = [
     ],
     transport: "About 25 min from Paphos. From Statos Agios Fotios village, follow signs 1 km toward Chrysorrogiatissa.",
     parking: "On-site parking.",
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+kolios@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://www.kolioswinery.com.cy/contact/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kyperounta",
@@ -211,6 +223,8 @@ export const wineries: Winery[] = [
     transport: "50 km from Limassol, 75 km from Nicosia. Pitsilia, Troodos.",
     parking: "On-site.",
     combineWith: ["olympus-summit", "platres", "artemis"],
+    sourceUrl: "https://kyperoundawinery.com/en/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "santo",
@@ -236,9 +250,12 @@ export const wineries: Winery[] = [
     latitude: 34.69,
     longitude: 33.02,
     combineWith: ["kourion", "governors-beach"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+santo@cyprus-winter.example",
-    partnerLeadFeeEur: 8,
+    isPublic: false,
+    isBookable: false,
+    sourceUrl: "https://santowines.gr/visit-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "tsangarides",
@@ -295,6 +312,8 @@ export const wineries: Winery[] = [
     latitude: 34.834,
     longitude: 32.432,
     combineWith: ["vouni-panayia", "pafos-mosaics", "chrysorrogiatissa"],
+    sourceUrl: "https://www.fikardoswines.com.cy/bookings/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "vlassides",
@@ -326,6 +345,8 @@ export const wineries: Winery[] = [
       { name: "Eddial", variety: "Sparkling", price: "€7/glass" },
     ],
     combineWith: ["koilani", "omodos", "tsiakkas"],
+    sourceUrl: "https://vlassideswinery.com/visits/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "vasilikon",
@@ -356,6 +377,8 @@ export const wineries: Winery[] = [
       { name: "Xinisteri Single Vineyard", variety: "Xynisteri", price: "—" },
     ],
     combineWith: ["adonis", "kolios", "polis", "polis-harbour", "smigies"],
+    sourceUrl: "https://vasilikon.com/contact-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ktima-vassiliades",
@@ -385,6 +408,9 @@ export const wineries: Winery[] = [
       { name: "Geroklima", variety: "Maratheftiko", price: "—" },
     ],
     combineWith: ["omodos", "tsiakkas", "artemis"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ayia-mavri",
@@ -467,6 +493,9 @@ export const wineries: Winery[] = [
     contactPhone: "+357 99 651707",
     latitude: 34.847,
     longitude: 32.808,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "aes-ambelis",
@@ -513,6 +542,8 @@ export const wineries: Winery[] = [
     localSecret: "Only winery in Cyprus with 100% estate grapes. Lefkada is a standout.",
     latitude: 34.86,
     longitude: 32.47,
+    sourceUrl: "https://www.makarounaswinery.com/visit/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "minous",
@@ -556,6 +587,8 @@ export const wineries: Winery[] = [
     latitude: 34.851,
     longitude: 33.304,
     combineWith: ["lefkara", "platres"],
+    sourceUrl: "https://www.christoudia.com/wine-tasting-near-lefkara/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "tria-elit",
@@ -575,6 +608,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar; combine with Kourion or harbour lunch.",
     latitude: 34.73,
     longitude: 32.87,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "nichteri",
@@ -598,6 +634,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.90,
     longitude: 32.57,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "meletiou",
@@ -621,6 +660,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.839,
     longitude: 32.382,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "iona",
@@ -644,6 +686,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.823,
     longitude: 32.892,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "komos",
@@ -667,6 +712,9 @@ export const wineries: Winery[] = [
     parking: "Village; walk from monastery square.",
     latitude: 34.847,
     longitude: 32.808,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "adege",
@@ -690,6 +738,9 @@ export const wineries: Winery[] = [
     localSecret: "Vasa is quieter than Omodos. Mountain air and Lefkada. Reserve—they appreciate it.",
     transport: "Vasa, Krasochoria.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "syndesmos",
@@ -713,6 +764,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.88,
     longitude: 32.37,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "savvas",
@@ -736,6 +790,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.83,
     longitude: 32.88,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ayii-anargyri",
@@ -784,6 +841,8 @@ export const wineries: Winery[] = [
     latitude: 34.84,
     longitude: 32.91,
     combineWith: ["omodos", "koilani", "vlassides"],
+    sourceUrl: "https://argyrideswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kalamos",
@@ -808,6 +867,8 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.86,
     longitude: 32.54,
+    sourceUrl: "https://www.kalamoswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "cholettis",
@@ -831,6 +892,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.85,
     longitude: 32.56,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "yiannis",
@@ -854,6 +918,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.82,
     longitude: 32.86,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "petrides",
@@ -877,6 +944,9 @@ export const wineries: Winery[] = [
     parking: "On-site.",
     latitude: 34.85,
     longitude: 32.50,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "monagri",
@@ -900,6 +970,9 @@ export const wineries: Winery[] = [
     localSecret: "Ask for the cellar tour. Deep Commandaria country. The cooperative story is worth hearing.",
     transport: "Monagri, Commandaria zone.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "loukas",
@@ -923,6 +996,9 @@ export const wineries: Winery[] = [
     localSecret: "One of the few Omodos wineries where you can drop in. Ideal for first-timers.",
     transport: "Omodos village centre; 5 min from monastery square.",
     parking: "Village.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "stavrinos",
@@ -946,6 +1022,9 @@ export const wineries: Winery[] = [
     localSecret: "Rosé is crisp even in winter. Ask. The fireplace is the draw.",
     transport: "Dhoros village, Krasochoria.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "avakas",
@@ -993,6 +1072,9 @@ export const wineries: Winery[] = [
     localSecret: "Ask to see the cellar. Koilani wine heritage. Generations in the stone.",
     transport: "Koilani, Krasochoria.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "agios-theodoros",
@@ -1016,6 +1098,9 @@ export const wineries: Winery[] = [
     longitude: 32.84,
     transport: "Agios Theodoros, Limassol hills.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ambeli",
@@ -1039,6 +1124,9 @@ export const wineries: Winery[] = [
     localSecret: "Lefkada has character. Village knows how to warm you up.",
     transport: "Platres village.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "domes-sergiou",
@@ -1048,9 +1136,9 @@ export const wineries: Winery[] = [
     transport: "Short drive from Larnaca or Limassol (A1). Skarinou exit.",
     parking: "On site",
     backstory:
-      "The Sergiou family brings a fresh perspective to Cypriot winemaking. From their base in Skarinou, between Larnaca and Limassol, they work exclusively with indigenous varieties; Xynisteri, Morokanella, Assyrtiko, Maratheftiko; and their Atypon range (the name means 'unexpected') has become a talking point among wine lovers. They sell direct via their online shop and welcome visitors for tastings by appointment.",
+      "A new Skarinou producer focused on indigenous Cypriot varieties. Public information confirms online wine sales, but regular winery visits and tastings have not yet been officially opened.",
     description:
-      "The Sergiou family makes wine in Skarinou, between Limassol and Larnaca. Indigenous varieties only: Xynisteri, Morokanella, Assyrtiko, Maratheftiko, and the Atypon blends. They often pour the tastings themselves and tell the story behind each bottle. Book ahead.",
+      "A Skarinou producer working with indigenous Cypriot varieties. Its wines are available online, but the winery is not currently confirmed as open for regular public visits or tastings.",
     type: "winery",
     highlights: [
       "Xynisteri Single Vineyard",
@@ -1062,17 +1150,16 @@ export const wineries: Winery[] = [
     image: "/images/cyprus/cyprus-winery-troodos.jpg",
     bestFor: ["Modern Cypriot wine", "Couples", "Wine enthusiasts", "Easy drive from Larnaca/Limassol"],
     wineRoute: "Larnaca–Limassol corridor",
-    tastingInfo: "Tastings by appointment; online shop for bottles €14 to 20",
-    winterOpen: true,
-    bookingUrl: "https://domeswinery.com/pages/contact",
+    tastingInfo: "Online wine sales available. Public visits and tastings are not currently confirmed.",
+    winterOpen: false,
+    bookingUrl: "https://domeswinery.com/",
     shopUrl: "https://domeswinery.com/collections/all",
     winterTip: "Skarinou is a short drive from Larnaca or Limassol; ideal for a winter afternoon. Their Atypon 01 red blend and Xynisteri Single Vineyard are standouts. Can't visit? Order online.",
     bestTimeToVisit: "Dec to Mar, book ahead",
     localSecret: "Their Atypon 02 (Assyrtiko & Xynisteri blend) and Rosé Maratheftiko 2024 surprise people who think they know Cypriot wine. Ask about the Atypon range; the name means 'unexpected'.",
     combineWith: ["lefkara", "kolossi", "governors-beach", "choirokoitia", "kourion", "cape-greco", "kato-drys", "vavla", "lefkara-kato"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+domes-sergiou@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
     signatureWines: [
       {
         name: "Xynisteri 2023",
@@ -1106,6 +1193,11 @@ export const wineries: Winery[] = [
     instagramHandle: "domeswinery",
     latitude: 34.8192,
     longitude: 33.3589,
+    contactPhone: "+357 99 317070",
+    contactEmail: "erin.b@domes-sergiouwinery.com",
+    isBookable: false,
+    sourceUrl: "https://wineriesofcyprus.com/item/domes-sergiou-winery/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "mystes",
@@ -1136,6 +1228,8 @@ export const wineries: Winery[] = [
       { name: "Promara white 2021", variety: "Promara", price: "€24" },
     ],
     combineWith: ["chrysorrogiatissa", "pafos-mosaics", "vouni-panayia"],
+    sourceUrl: "https://mysteswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "oenou-yi",
@@ -1160,7 +1254,9 @@ export const wineries: Winery[] = [
     localSecret: "Ask about limited releases. Some vines over 120 years old.",
     transport: "Omodos village; Afamis–Laona hills.",
     parking: "On-site.",
-    combineWith: ["omodos", "loukas", "ktima-vassiliades", "artemis"],
+    combineWith: ["omodos", "artemis"],
+    sourceUrl: "https://oenouyiwine.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "sterna-boutique",
@@ -1209,7 +1305,7 @@ export const wineries: Winery[] = [
     contactPhone: "+357 25 423234",
     winterTip: "Call ahead. Silikou is off the main loop; fewer visitors, more room to breathe. Combine with Savvas winery for a full Commandaria day.",
     localSecret: "The traditional presses and vats tell the story of Commandaria. Savvas Winery is minutes away—do both in one afternoon.",
-    combineWith: ["savvas", "omodos", "koilani"],
+    combineWith: ["omodos", "koilani"],
   },
   {
     id: "hadjicharalambous",
@@ -1231,6 +1327,8 @@ export const wineries: Winery[] = [
     winterTip: "Stroumbi village, Paphos hills. Book the hands-on experience if you have time. Part of the Laona route; combine with Fikardos or Tsangarides.",
     localSecret: "Their small-batch Chardonnay and Cabernet Sauvignon. The family pours and tells the story. Stroumbi is quieter than Omodos.",
     combineWith: ["fikardos", "tsangarides", "pafos-mosaics"],
+    sourceUrl: "https://hchwinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "pittali",
@@ -1252,6 +1350,8 @@ export const wineries: Winery[] = [
     winterTip: "High-altitude Pitsilia. Call ahead. Combine with Madari Ridge walk. The mountain does the work.",
     localSecret: "Their great-grandfather planted vines in 1910. The story is in every bottle. Ask about the rescued old vineyards.",
     combineWith: ["madari-ridge", "kyperounta", "platres"],
+    sourceUrl: "https://pittaliwinery.com",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "papaioannou",
@@ -1273,6 +1373,8 @@ export const wineries: Winery[] = [
     winterTip: "Vasa village. The grand cellar is worth seeing. Groups welcome. Combine with Koilani and Vlassides.",
     localSecret: "Their Petra white and red blends. Ask about them. Vasa is quieter than Omodos.",
     combineWith: ["koilani", "vlassides", "omodos"],
+    sourceUrl: "https://papaioannouwinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "karseras",
@@ -1372,7 +1474,7 @@ export const wineries: Winery[] = [
     localSecret: "Six generations. Their Commandaria and Ino Cabernet. The story of Cypriot wine in one place.",
     latitude: 34.847,
     longitude: 32.808,
-    combineWith: ["omodos", "loukas", "oenou-yi", "artemis"],
+    combineWith: ["omodos", "oenou-yi", "artemis"],
   },
   {
     id: "revecca",
@@ -1392,7 +1494,7 @@ export const wineries: Winery[] = [
     localSecret: "Traditional sun-dried grapes. The way it used to be done. Fewer visitors, more story.",
     latitude: 34.74,
     longitude: 32.73,
-    combineWith: ["silikou-museum", "savvas", "omodos"],
+    combineWith: ["silikou-museum", "omodos"],
   },
   {
     id: "mallia",
@@ -1432,7 +1534,7 @@ export const wineries: Winery[] = [
     localSecret: "Near Commandaria country but not in the thick of it. A quieter stop.",
     latitude: 34.73,
     longitude: 32.87,
-    combineWith: ["omodos", "kolossi", "santo"],
+    combineWith: ["omodos", "kolossi"],
   },
   {
     id: "antoniades",
@@ -1453,7 +1555,9 @@ export const wineries: Winery[] = [
     localSecret: "Nama: the ancient name of Commandaria. Aged over ten years in oak.",
     latitude: 34.71,
     longitude: 32.82,
-    combineWith: ["omodos", "kolossi", "santo", "kourion"],
+    combineWith: ["omodos", "kolossi", "kourion"],
+    sourceUrl: "https://www.antoniadeswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ayios-savas",
@@ -1492,6 +1596,9 @@ export const wineries: Winery[] = [
     latitude: 34.92,
     longitude: 32.62,
     combineWith: ["chrysorrogiatissa", "vouni-panayia", "pafos-mosaics"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "lambouri",
@@ -1513,6 +1620,9 @@ export const wineries: Winery[] = [
     transport: "Koilani, Krasochoria. ~40 min from Limassol.",
     parking: "On-site.",
     combineWith: ["omodos", "koilani", "tsiakkas", "lania"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "sodap",
@@ -1669,6 +1779,9 @@ export const wineries: Winery[] = [
     transport: "Limassol corridor. ~20 min from Limassol.",
     parking: "On-site.",
     combineWith: ["kolossi", "kourion", "omodos"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "linos",
@@ -1691,6 +1804,9 @@ export const wineries: Winery[] = [
     latitude: 34.87,
     longitude: 32.86,
     combineWith: ["platres", "caledonia-falls", "artemis", "psilo-dendro"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "makrikontas",
@@ -1713,6 +1829,9 @@ export const wineries: Winery[] = [
     latitude: 34.82,
     longitude: 32.77,
     combineWith: ["omodos", "lania", "silikou-museum"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "fikardou-winery",
@@ -1735,6 +1854,9 @@ export const wineries: Winery[] = [
     latitude: 34.97,
     longitude: 33.18,
     combineWith: ["fikardou", "machairas", "agros"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "sygkrasi",
@@ -1758,8 +1880,13 @@ export const wineries: Winery[] = [
     transport: "Kathikas village. On the Akamas–Laona loop.",
     parking: "On-site.",
     combineWith: ["adonis", "aphrodite", "the-farmyard", "vasilikon"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
 ];
+
+export const wineries: Winery[] = wineryRecords.filter((winery) => winery.isPublic !== false);
 
 export function getWineryById(id: string): Winery | undefined {
   return wineries.find((w) => w.id === id);
