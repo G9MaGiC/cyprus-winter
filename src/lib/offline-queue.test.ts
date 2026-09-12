@@ -123,6 +123,62 @@ describe("offline queue", () => {
     expect(order).toEqual([OFFLINE_QUEUE_DROPPED_EVENT, OFFLINE_QUEUE_DRAINED_EVENT]);
   });
 
+  it("replaces a queued booking that shares an idempotency key instead of appending an amended payload", async () => {
+    const key = "same-offline-booking-key";
+    addMutation({
+      type: "winery_booking",
+      url: "/api/bookings",
+      method: "POST",
+      body: JSON.stringify({
+        idempotencyKey: key,
+        date: "2099-04-01",
+        providerId: "tsiakkas",
+      }),
+    });
+    addMutation({
+      type: "winery_booking",
+      url: "/api/bookings",
+      method: "POST",
+      body: JSON.stringify({
+        idempotencyKey: key,
+        date: "2099-04-02",
+        providerId: "tsiakkas",
+      }),
+    });
+
+    expect(getQueue()).toHaveLength(1);
+    expect(JSON.parse(getQueue()[0]?.body ?? "{}").date).toBe("2099-04-02");
+
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValue(Response.json({ booking: { id: "bk-amended" } }, { status: 201 }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await processQueue();
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const sent = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body));
+    expect(sent.date).toBe("2099-04-02");
+    expect(getQueue()).toEqual([]);
+  });
+
+  it("still queues distinct bookings that use different idempotency keys", () => {
+    addMutation({
+      type: "winery_booking",
+      url: "/api/bookings",
+      method: "POST",
+      body: JSON.stringify({ idempotencyKey: "key-a", providerId: "tsiakkas" }),
+    });
+    addMutation({
+      type: "winery_booking",
+      url: "/api/bookings",
+      method: "POST",
+      body: JSON.stringify({ idempotencyKey: "key-b", providerId: "tsiakkas" }),
+    });
+
+    expect(getQueue()).toHaveLength(2);
+  });
+
   it("deduplicates concurrent queue processors so a booking mutation posts once", async () => {
     const fetchMock = vi
       .fn<typeof fetch>()

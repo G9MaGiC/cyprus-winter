@@ -66,6 +66,21 @@ function save(items: QueuedMutation[]) {
   }
 }
 
+/** Idempotency key from a queued JSON body, if the payload carries one. */
+function idempotencyKeyFromBody(body?: string): string | null {
+  if (!body) return null;
+  try {
+    const parsed: unknown = JSON.parse(body);
+    if (!parsed || typeof parsed !== "object") return null;
+    const key = (parsed as { idempotencyKey?: unknown }).idempotencyKey;
+    if (typeof key !== "string") return null;
+    const trimmed = key.trim();
+    return trimmed || null;
+  } catch {
+    return null;
+  }
+}
+
 /** Add a same-origin API mutation to the queue. */
 export function addMutation(mutation: Omit<QueuedMutation, "id" | "createdAt">): void {
   const normalizedMethod = mutation.method.toUpperCase();
@@ -84,8 +99,16 @@ export function addMutation(mutation: Omit<QueuedMutation, "id" | "createdAt">):
     id: `mq-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     createdAt: Date.now(),
   };
-  items.push(item);
-  save(items);
+  // The booking form keeps one idempotency key across offline retries so a
+  // replay is safe. An amended resubmit (same key, new body) must replace the
+  // stale payload — appending would POST the original booking, then 409-drop
+  // the amendment, leaving a silent first-intent booking plus a false failure.
+  const key = idempotencyKeyFromBody(item.body);
+  const next = key
+    ? items.filter((queued) => idempotencyKeyFromBody(queued.body) !== key)
+    : items;
+  next.push(item);
+  save(next);
 }
 
 /** Get current queue (for UI/debugging). */
