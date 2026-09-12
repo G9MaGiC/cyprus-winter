@@ -253,9 +253,10 @@ describe("partner portal API", () => {
       )
     );
     expect(res.status).toBe(200);
+    // The overlay hero now wins over the catalog fallback for this provider.
     expect(resolveWineryImage("fixture-winery")).toBe("/images/cyprus/winery-tsiakkas.jpg");
-    expect(resolveWineryImage("fixture-winery")).not.toBe("");
     expect(before).toBeTruthy();
+    expect(before).not.toBe("/images/cyprus/winery-tsiakkas.jpg");
   });
 
   it("does not treat a partner cookie as guest booking auth", async () => {

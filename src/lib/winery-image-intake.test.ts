@@ -26,9 +26,8 @@ describe("winery image intake metrics", () => {
   });
 
   it("verified partners resolve without generic troodos fallback", () => {
-    // Zero verified partners until written authorization exists (BUG-355;
-    // docs/PARTNER_DATA_VERIFICATION_2026-09-02.md). The loop re-engages per
-    // partner when a real one onboards.
+    // Zero verified partners until written authorization exists
+    // (2026-09-02 verification pass); the loop re-engages per onboarding.
     expect(VERIFIED_PARTNER_IDS.length).toBe(0);
     for (const id of VERIFIED_PARTNER_IDS) {
       const url = resolveWineryImage(id);
