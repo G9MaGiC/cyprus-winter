@@ -409,15 +409,6 @@ export const secretGems: SecretGem[] = [
     type: "pairing",
   },
   {
-    id: "santo-sunset",
-    title: "Santo: time the sunset",
-    body: "Book lunch for 12–2; in winter the terrace fills at weekends. Sunset in December is around 5pm—time it right and you get the golden hour with a glass. Their Ayios Onoufrios red pairs well with meze. On a mild day you can sit outside with a blanket. Kourion and Governor's Beach are nearby for a full Limassol coast day.",
-    region: "Limassol",
-    placeId: "santo",
-    href: "/discover/santo",
-    type: "timing",
-  },
-  {
     id: "kyperounta-snow",
     title: "Kyperounta: Europe's highest",
     body: "At 1,400m Kyperounta is among Europe's highest wineries by facility altitude—Tsiakkas's Petralona vineyard reaches higher still. Call ahead in Jan–Feb—snow can close the road. December or March are safer. Wrap up warm; the tasting room has heaters but the drive up is half the adventure. Combine with Olympus Summit or Artemis trail. The high-altitude wines have minerality you won't find at sea level.",
@@ -429,7 +420,7 @@ export const secretGems: SecretGem[] = [
   {
     id: "domes-atupon",
     title: "Domes Sergiou: the Atypon range",
-    body: "Atypon means 'unexpected'—ask about it. Their Atypon 02 (Assyrtiko & Xynisteri) and Rosé Maratheftiko 2024 surprise people who think they know Cypriot wine. Skarinou is a short drive from Larnaca or Limassol. Indigenous varieties only. Can't visit? Order from their online shop. Book tastings ahead.",
+    body: "Atypon means 'unexpected'—ask about it. Their Atypon 02 (Assyrtiko & Xynisteri) and Rosé Maratheftiko 2024 surprise people who think they know Cypriot wine. Skarinou is a short drive from Larnaca or Limassol. Indigenous varieties only. Tastings are not currently confirmed — order from their online shop.",
     region: "Larnaca",
     placeId: "domes-sergiou",
     href: "/discover/domes-sergiou",
