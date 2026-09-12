@@ -18,7 +18,8 @@ describe("resolveWineryImage", () => {
   });
 
   it("uses per-id barrel image for mapped Krasochoria winery", () => {
-    expect(resolveWineryImage("ktima-vassiliades")).toBe("/images/cyprus/cyprus-winery-barrels.jpg");
+    // ktima-vassiliades carried this guard before the 2026-09-02 quarantine.
+    expect(resolveWineryImage("vlassides")).toBe("/images/cyprus/cyprus-winery-barrels.jpg");
   });
 });
 
@@ -76,13 +77,15 @@ describe("winery image files on disk (G10)", () => {
     expect(resolveWineryImage("mystes")).toBe("/images/cyprus/cyprus-vineyard-laona.jpg");
   });
 
-  it("maps Krasochoria verified partners to the January Lofou vineyard", () => {
+  it("maps Krasochoria estates to the January Lofou vineyard", () => {
+    // santo carried the second assertion before the 2026-09-02 quarantine.
     expect(resolveWineryImage("zambartas")).toBe("/images/cyprus/cyprus-vineyard-lofou-january.jpg");
-    expect(resolveWineryImage("santo")).toBe("/images/cyprus/cyprus-vineyard-lofou-january.jpg");
   });
 
-  it("maps Savvas to Silikou terroir and uses it for Commandaria fallback", () => {
-    expect(resolveWineryImage("savvas")).toBe("/images/cyprus/cyprus-vineyard-silikou.jpg");
-    expect(resolveWineryImage("monagri")).toBe("/images/cyprus/cyprus-vineyard-silikou.jpg");
+  it("maps Commandaria-route wineries to Silikou terroir via route fallback", () => {
+    // savvas/monagri carried this guard before the 2026-09-02 quarantine;
+    // revecca and the Silikou museum are the public Commandaria carriers now.
+    expect(resolveWineryImage("revecca")).toBe("/images/cyprus/cyprus-vineyard-silikou.jpg");
+    expect(resolveWineryImage("silikou-museum")).toBe("/images/cyprus/cyprus-vineyard-silikou.jpg");
   });
 });

@@ -20,12 +20,16 @@ describe("winery image intake metrics", () => {
       counts[classifyWineryImageSource(winery.id)] += 1;
     }
     expect(counts["per-id"] + counts["partner-overlay"]).toBeGreaterThanOrEqual(6);
-    expect(wineries.length).toBeGreaterThan(50);
+    // 44 public wineries after the 2026-09-02 quarantine (was 71).
+    expect(wineries.length).toBeGreaterThan(40);
     expect(counts.fallback).toBe(0);
   });
 
   it("verified partners resolve without generic troodos fallback", () => {
-    expect(VERIFIED_PARTNER_IDS.length).toBe(6);
+    // Zero verified partners until written authorization exists (BUG-355;
+    // docs/PARTNER_DATA_VERIFICATION_2026-09-02.md). The loop re-engages per
+    // partner when a real one onboards.
+    expect(VERIFIED_PARTNER_IDS.length).toBe(0);
     for (const id of VERIFIED_PARTNER_IDS) {
       const url = resolveWineryImage(id);
       expect(url).not.toBe("/images/cyprus/cyprus-winery-troodos.jpg");

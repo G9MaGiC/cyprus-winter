@@ -57,7 +57,10 @@ describe("bestFor display overlay (AUD-99)", () => {
   const tokens = collectTokens();
 
   it("collects a plausible vocabulary from the data layer", () => {
-    expect(tokens.size).toBeGreaterThanOrEqual(300);
+    // Threshold tracks the public catalog: the 2026-09-02 quarantine
+    // (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md) retired ~20 tokens whose
+    // only carriers left public output. 270 keeps the guard meaningful.
+    expect(tokens.size).toBeGreaterThanOrEqual(270);
   });
 
   for (const locale of LOCALES) {

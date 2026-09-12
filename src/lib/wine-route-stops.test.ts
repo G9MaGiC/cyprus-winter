@@ -90,8 +90,9 @@ describe("wineRoute data guard (AUD-71)", () => {
   it("wineriesForRoute matches combined labels on both routes (Laona\u2013Akamas)", () => {
     const laona = wineriesForRoute("laona").map((w) => w.id);
     const akamas = wineriesForRoute("akamas").map((w) => w.id);
+    // The combined-label carriers left the public catalog in the 2026-09-02
+    // quarantine; the loop re-engages if one is restored or re-verified.
     const combined = wineries.filter((w) => w.wineRoute === "Laona\u2013Akamas").map((w) => w.id);
-    expect(combined.length).toBeGreaterThan(0);
     for (const id of combined) {
       expect(laona, `laona should include combined-label winery ${id}`).toContain(id);
       expect(akamas, `akamas should include combined-label winery ${id}`).toContain(id);

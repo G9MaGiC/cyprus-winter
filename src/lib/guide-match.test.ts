@@ -1,4 +1,50 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import type { Guide } from "@/data/guides";
+
+/**
+ * Fixture guides stand in for the data layer: since the 2026-09-02
+ * verification pass (docs/PARTNER_DATA_VERIFICATION_2026-09-02.md) the real
+ * catalog carries zero verified partners, so matching logic is pinned against
+ * fixtures with deliverable (non-placeholder) contact domains instead.
+ */
+vi.mock("@/data/guides", () => {
+  const guides: Guide[] = [
+    {
+      id: "fixture-guide-en",
+      name: "Fixture Guide EN",
+      region: "Troodos",
+      district: "lemesos",
+      description: "Fixture",
+      languages: ["english"],
+      trailIds: ["artemis"],
+      isVerified: true,
+      partnerEmail: "guide-en@fixture-guides.example.org",
+    },
+    {
+      id: "fixture-guide-de",
+      name: "Fixture Guide DE",
+      region: "Troodos",
+      district: "lemesos",
+      description: "Fixture",
+      languages: ["german", "english"],
+      trailIds: ["artemis"],
+      isVerified: true,
+      partnerEmail: "guide-de@fixture-guides.example.org",
+    },
+    {
+      id: "fixture-guide-draft",
+      name: "Fixture Guide Draft",
+      region: "Troodos",
+      district: "lemesos",
+      description: "Fixture",
+      languages: ["english"],
+      trailIds: ["artemis"],
+      isVerified: false,
+    },
+  ];
+  return { guides };
+});
+
 import {
   buildGuideDirectoryHref,
   getVerifiedGuidesForTrail,

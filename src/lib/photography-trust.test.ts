@@ -51,7 +51,10 @@ describe("photography trust — home book funnel", () => {
   });
 
   it("all verified partners resolve to trusted hero sources", () => {
-    expect(VERIFIED_IDS.length).toBe(6);
+    // Zero verified partners until written authorization exists
+    // (2026-09-02 verification pass). Revisit this count when a real
+    // partner onboards; the loop below is the per-partner guard.
+    expect(VERIFIED_IDS.length).toBe(0);
     for (const id of VERIFIED_IDS) {
       expect(isTrustedWineryHero(id), id).toBe(true);
       expect(resolveWineryImage(id)).not.toBe(GENERIC_WINERY_FALLBACK);
