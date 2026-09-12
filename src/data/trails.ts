@@ -702,7 +702,7 @@ export const trails: Trail[] = [
     trailhead: "Monagri / Amasgos area",
     bring: ["Water", "Sun protection"],
     localSecret: "Gentle, quiet. Olive groves and winter light. Krasochoria wineries nearby.",
-    combineWith: ["omodos", "monagri", "tsiakkas"],
+    combineWith: ["omodos", "tsiakkas"],
     trailheadCoords: { lat: 34.752, lng: 32.912 },
   },
   {
@@ -2159,7 +2159,7 @@ export const trails: Trail[] = [
     trailhead: "(a) 200m after the village of Lazanias. Ends in the village of Fikardou.",
     bring: ["Water", "Sturdy shoes", "Layers"],
     localSecret: "End in Fikardou for preserved stone houses—arrange car at both ends.",
-    combineWith: ["fikardou","machairas","politiko-machairas"],
+    combineWith: ["fikardou","machairas","lazanias-fikardou"],
     locationText: "Nicosia",
   },
   {
