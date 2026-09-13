@@ -56,6 +56,29 @@ The ten findings the audit drafted as provisional entries (`docs/UX_UI_PERSONA_A
 
 ---
 
+### [BUG-365] Booking funnel and scorecard overstated operational reality
+
+**Severity:** High
+**Area:** Trust / Commercial readiness
+**Page/Component:** `/api/bookings`, `/book/winery/*`, `/book/guide/*`, sitemap, `docs/SCORECARD.md`
+
+### Reproduction
+1. POST a booking request for a provider whose partner contact uses an RFC 2606 placeholder domain — the API accepted it and replied "Booking request sent. The winery will be in touch."
+2. Open `/book/winery` — every public winery was listed as bookable, including Dómes Sergiou, which is not confirmed open for regular visits or tastings.
+3. Inspect `/sitemap.xml` — every URL carried a same-day `lastModified`, a fabricated freshness signal.
+4. Read `docs/SCORECARD.md` — Test & CI scored 5/5 while GitHub Actions runs terminate with `startup_failure` (BUG-347).
+
+### Expected
+Only providers that can actually receive a booking request are offered and accepted; a disconnected request is described as saved with accurate next steps; the sitemap carries no fabricated freshness signals; the scorecard reflects real CI health.
+
+### Actual
+The booking funnel and the readiness scorecard overstated partner connectivity, bookability, and CI status.
+
+### Fix status
+Fixed in `fix/booking-honesty` (PR #239) and `fix/sitemap-scorecard-truth`: route predicates reject non-bookable/non-public providers, responses expose `partnerConnected` with honest fallback copy, book pages and CTAs list only actionable providers, sitemap `lastModified` removed, scorecard corrected (Test & CI 2/5, overall 3.9/5).
+
+---
+
 ### [BUG-354] Weather / Right Now APIs 503 on live production without Upstash
 
 **Severity:** High
