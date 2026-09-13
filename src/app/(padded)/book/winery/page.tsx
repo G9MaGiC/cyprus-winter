@@ -14,6 +14,7 @@ import { localizeWineryContent } from "@/lib/winery-content";
 import { getBestForLocalizer } from "@/lib/best-for";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { isPartnerVerified } from "@/lib/partner-verification";
+import { isWineryBookable } from "@/lib/bookable";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("book.pages.wineryList.meta");
@@ -40,7 +41,9 @@ export default async function WineriesListPage() {
 
   // AUD-10 pilot: overlay localized Book-stage content for the covered ids
   // (localizeWineryContent is a no-op for the rest).
-  const localizedWineries = await Promise.all(wineries.map((w) => localizeWineryContent(w)));
+  // Only wineries that can actually take a booking request are listed
+  // (launch-truth hardening); the detail route enforces the same predicate.
+  const localizedWineries = await Promise.all(wineries.filter(isWineryBookable).map((w) => localizeWineryContent(w)));
   // AUD-99 residual: bestFor chips display localized; data keeps EN tokens.
   const localizeBestFor = await getBestForLocalizer();
   return (

@@ -52,9 +52,11 @@ export default function DetailBookingSection({ a, tDetail }: DetailBookingSectio
           )}
           {isWinery(a) && (
             <>
-              <AppLink href={`/book/winery/${a.id}?from=discover`} className={`gap-2 ${CTA.primaryCompact}`}>
-                {tDetail("booking.bookTasting")}
-              </AppLink>
+              {a.isBookable !== false && Boolean(a.bookingUrl) && (
+                <AppLink href={`/book/winery/${a.id}?from=discover`} className={`gap-2 ${CTA.primaryCompact}`}>
+                  {tDetail("booking.bookTasting")}
+                </AppLink>
+              )}
               {a.bookingUrl && (
                 <a
                   href={a.bookingUrl}

@@ -237,7 +237,9 @@ export async function POST(req: Request) {
     const successLimitRemaining = Math.min(limitResult.remaining, emailLimitResult.remaining);
 
     if (type === "winery_tasting") {
-      const winery = wineries.find((w) => w.id === providerId);
+      const winery = wineries.find(
+        (w) => w.id === providerId && w.isBookable !== false && Boolean(w.bookingUrl)
+      );
       if (!winery) {
         return jsonError("NOT_FOUND", "Winery not found", 404);
       }
@@ -281,8 +283,11 @@ export async function POST(req: Request) {
         {
           booking,
           message: created
-            ? "Booking request sent. The winery will be in touch."
+            ? isPartnerVerified(winery)
+              ? "Booking request sent. The winery will be in touch."
+              : "Request saved. Contact the winery directly to confirm availability."
             : "This booking request was already received.",
+          partnerConnected: isPartnerVerified(winery),
           replayed: !created,
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
@@ -297,7 +302,7 @@ export async function POST(req: Request) {
     }
 
     if (type === "guide_tour") {
-      const guide = guides.find((g) => g.id === providerId);
+      const guide = guides.find((g) => g.id === providerId && g.isPublic !== false);
       if (!guide) {
         return jsonError("NOT_FOUND", "Guide not found", 404);
       }
@@ -350,8 +355,11 @@ export async function POST(req: Request) {
         {
           booking,
           message: created
-            ? "Booking request sent. The guide will be in touch."
+            ? isPartnerVerified(guide)
+              ? "Booking request sent. The guide will be in touch."
+              : "Request saved. Contact the guide directly to confirm availability."
             : "This booking request was already received.",
+          partnerConnected: isPartnerVerified(guide),
           replayed: !created,
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
