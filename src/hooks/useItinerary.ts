@@ -12,12 +12,16 @@ import { toAbsoluteUrl } from "@/lib/site-url";
 import { localizedPathname } from "@/lib/seo-locale-urls";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { trackProduct } from "@/lib/analytics";
+import { patchPlanUrlSearchParams } from "@/lib/plan-url-params";
 import {
   emptyDays,
   loadItineraryFromStorage,
   loadItineraryFromUrl,
   persistItineraryToStorage,
   getItineraryStorageKey,
+  readAppliedPlanParam,
+  resolveItineraryHydration,
+  writeAppliedPlanParam,
 } from "@/lib/itinerary-storage";
 
 const STORAGE_KEY = getItineraryStorageKey();
@@ -62,13 +66,37 @@ export function useItinerary() {
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [icsDownloaded, setIcsDownloaded] = useState(false);
+  const hydratedOnceRef = useRef(false);
 
   useEffect(() => {
     queueMicrotask(() => {
+      const planParam = searchParams.get("plan");
       const fromUrl = loadItineraryFromUrl(searchParams);
       const fromStorage = loadItineraryFromStorage();
-      // URL param wins (shared link); otherwise use localStorage
-      setDays(fromUrl ?? fromStorage);
+      const resolved = resolveItineraryHydration({
+        planParam,
+        fromUrl,
+        fromStorage,
+        appliedPlanParam: readAppliedPlanParam(),
+      });
+
+      if (resolved.adoptedFromUrl) {
+        // Persist synchronously so sibling useItinerary() instances on this
+        // page (Plan + map) read the adopted snapshot, not a stale plan.
+        if (resolved.nextAppliedPlanParam) {
+          writeAppliedPlanParam(resolved.nextAppliedPlanParam);
+        }
+        persistItineraryToStorage(resolved.days);
+        setDays(resolved.days);
+        patchPlanUrlSearchParams((params) => params.delete("plan"));
+      } else if (!hydratedOnceRef.current) {
+        setDays(resolved.days);
+        if (fromUrl && planParam) {
+          patchPlanUrlSearchParams((params) => params.delete("plan"));
+        }
+      }
+
+      hydratedOnceRef.current = true;
       setHydrated(true);
     });
   }, [searchParams]);
