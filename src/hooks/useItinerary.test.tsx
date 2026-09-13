@@ -9,6 +9,25 @@ import { SITE_URL } from "@/lib/site-url";
 
 const STORAGE_KEY = "cyprus-winter-itinerary";
 
+function encodeDayOne(ids: string[]) {
+  return encodeItinerary({
+    1: ids,
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
+    10: [],
+    11: [],
+    12: [],
+    13: [],
+    14: [],
+  });
+}
+
 /** Vitest + Node can expose a broken global `localStorage`; use a full in-memory impl. */
 const memoryStore: Record<string, string> = {};
 
@@ -86,6 +105,7 @@ describe("useItinerary", () => {
 
   beforeEach(() => {
     wipeLocalStorage();
+    sessionStorage.clear();
     navMocks.planParam = null;
     clipboardMocks.writeText.mockClear();
     clipboardMocks.writeText.mockImplementation(() => Promise.resolve());
@@ -124,28 +144,57 @@ describe("useItinerary", () => {
       STORAGE_KEY,
       JSON.stringify({ "1": ["kourion"], "2": [] })
     );
-    navMocks.planParam = encodeItinerary({
-      1: ["pafos-mosaics"],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-      10: [],
-      11: [],
-      12: [],
-      13: [],
-      14: [],
-    });
+    navMocks.planParam = encodeDayOne(["pafos-mosaics"]);
 
     const { result } = renderHook(() => useItinerary(), { wrapper });
 
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     expect(result.current.days[1]).toEqual(["pafos-mosaics"]);
+  });
+
+  it("keeps post-share edits across remount when the same ?plan= is still in the URL", async () => {
+    navMocks.planParam = encodeDayOne(["pafos-mosaics"]);
+
+    const first = renderHook(() => useItinerary(), { wrapper });
+    await waitFor(() => expect(first.result.current.hydrated).toBe(true));
+    expect(first.result.current.days[1]).toEqual(["pafos-mosaics"]);
+
+    act(() => {
+      first.result.current.addToDayIfMissing("kourion");
+    });
+    await waitFor(() =>
+      expect(first.result.current.days[1]).toEqual(["pafos-mosaics", "kourion"])
+    );
+    await waitFor(() => {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      expect(raw).toBeTruthy();
+      const parsed = JSON.parse(raw!) as Record<string, string[]>;
+      expect(parsed["1"]).toEqual(["pafos-mosaics", "kourion"]);
+    });
+    first.unmount();
+
+    const second = renderHook(() => useItinerary(), { wrapper });
+    await waitFor(() => expect(second.result.current.hydrated).toBe(true));
+    expect(second.result.current.days[1]).toEqual(["pafos-mosaics", "kourion"]);
+  });
+
+  it("adopts a different ?plan= snapshot after a previous share was applied", async () => {
+    navMocks.planParam = encodeDayOne(["pafos-mosaics"]);
+    const first = renderHook(() => useItinerary(), { wrapper });
+    await waitFor(() => expect(first.result.current.hydrated).toBe(true));
+    act(() => {
+      first.result.current.addToDayIfMissing("kourion");
+    });
+    await waitFor(() =>
+      expect(first.result.current.days[1]).toContain("kourion")
+    );
+    first.unmount();
+
+    navMocks.planParam = encodeDayOne(["artemis"]);
+    const second = renderHook(() => useItinerary(), { wrapper });
+    await waitFor(() => expect(second.result.current.hydrated).toBe(true));
+    expect(second.result.current.days[1]).toEqual(["artemis"]);
   });
 
   it("toggleInDay adds a place on the active day and toggles off on second call", async () => {

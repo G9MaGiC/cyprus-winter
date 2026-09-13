@@ -54,6 +54,20 @@ test.describe("Discover -> Plan", () => {
     ).toBeVisible({ timeout: 15_000 });
   });
 
+  test("shared ?plan= edits survive reopening the same share URL", async ({ page }) => {
+    await gotoStable(page, "/plan?plan=1:pafos-mosaics");
+    await expect(page.getByRole("main")).toBeVisible();
+    await expect(page.getByRole("main")).toContainText(/Pafos Archaeological Site/i);
+
+    await gotoStable(page, "/plan?plan=1:pafos-mosaics&add=kourion");
+    await expect(page.getByRole("main")).toContainText(/Kourion/i);
+    await expect(page.getByRole("main")).toContainText(/Pafos Archaeological Site/i);
+
+    await gotoStable(page, "/plan?plan=1:pafos-mosaics");
+    await expect(page.getByRole("main")).toContainText(/Kourion/i);
+    await expect(page.getByRole("main")).toContainText(/Pafos Archaeological Site/i);
+  });
+
   test("resilience: back navigation from plan returns to discover context", async ({ page }) => {
     await gotoStable(page, "/discover");
     await expect(page.getByRole("main")).toBeVisible();

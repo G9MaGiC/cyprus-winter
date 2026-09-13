@@ -37,6 +37,31 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-365] Shared `?plan=` re-hydrate wipes itinerary edits on refresh
+
+**Severity:** Critical
+**Area:** Functional
+**Page/Component:** `useItinerary`, `/plan?plan=`
+
+### Reproduction
+1. Open a shared plan link, e.g. `/en/plan?plan=1:pafos-mosaics`
+2. Add or remove a place (localStorage updates)
+3. Refresh the page while `?plan=` is still in the address bar
+
+### Expected
+The customized itinerary survives refresh. The URL snapshot is applied once, then local edits win.
+
+### Actual
+Hydration always preferred `?plan=` over localStorage and then persisted that snapshot, so refresh (or remount) restored the original share and discarded edits.
+
+### Environment
+Any browser; first-open overwrite of a *new* share URL is intentional.
+
+### Fix status
+Fixed — adopt a given `?plan=` snapshot once per tab (`sessionStorage`), persist it immediately, strip the query param, and keep storage on remount of the same snapshot.
+
+---
+
 ### Fixed — UX/UI persona audit remediation (PR #227, Aug 31 – Sep 3 2026)
 
 The ten findings the audit drafted as provisional entries (`docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` §6.3, drafted as 354–363) — renumbered **+1 at the main merge** because PR #228's BUG-354 (Upstash soft-degrade) landed on main first; numbers below are final (owner-approved triage, Sep 3 2026). All ten fixed on the audit branch before merge; per-finding evidence lives in the audit register (§4/§8.2) and per-batch notes (§8.3).
