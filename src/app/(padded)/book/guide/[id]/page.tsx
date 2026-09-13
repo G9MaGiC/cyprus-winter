@@ -14,7 +14,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
-  return guides.map((g) => ({ id: g.id }));
+  return guides.filter((g) => g.isPublic !== false).map((g) => ({ id: g.id }));
 }
 
 export async function generateMetadata({
@@ -25,7 +25,7 @@ export async function generateMetadata({
   const { id } = await params;
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "book.pages.guideDetail" });
-  const guide = guides.find((g) => g.id === id);
+  const guide = guides.find((g) => g.id === id && g.isPublic !== false);
   if (!guide) notFound();
   const title = t("meta.title", { guideName: guide.name });
   const description = t("meta.description", { guideName: guide.name, region: guide.region });
@@ -52,7 +52,7 @@ export default async function GuideBookPage({
 }) {
   const { id } = await params;
   const { trail } = await searchParams;
-  const guide = guides.find((g) => g.id === id);
+  const guide = guides.find((g) => g.id === id && g.isPublic !== false);
   if (!guide) notFound();
   const [tNav, tCommon, tBookPages, tGuidesDir] = await Promise.all([
     getTranslations("nav"),

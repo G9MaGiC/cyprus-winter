@@ -10,6 +10,19 @@ vi.mock("@/lib/email", () => ({
   sendBookingLookupTokenEmail: vi.fn().mockResolvedValue(true),
 }));
 
+// The booking API now rejects non-public guide records (launch-truth
+// hardening). Keep one guide public in this suite so the trail/locale tests
+// still exercise the full guide-booking path.
+vi.mock("@/data/guides", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/data/guides")>();
+  return {
+    ...actual,
+    guides: actual.guides.map((g) =>
+      g.id === "cyprus-active-tours" ? { ...g, isPublic: true } : g
+    ),
+  };
+});
+
 function postReq(body: unknown, ip = "127.0.0.2") {
   return new Request("http://localhost:3000/api/bookings", {
     method: "POST",
@@ -143,6 +156,38 @@ describe("POST /api/bookings", () => {
     expect(data.error?.code).toBe("NOT_FOUND");
   });
 
+  it("rejects a winery that is not bookable", async () => {
+    const res = await POST(
+      postReq(
+        { ...validBody, providerId: "domes-sergiou", idempotencyKey: "test-booking-key-domes-001" },
+        "127.0.0.71"
+      )
+    );
+    expect(res.status).toBe(404);
+    const data = await res.json();
+    expect(data.error?.code).toBe("NOT_FOUND");
+  });
+
+  it("rejects a guide that is not public", async () => {
+    const res = await POST(
+      postReq(
+        {
+          type: "guide_tour",
+          providerId: "troodos-guides",
+          date: "2099-03-18",
+          idempotencyKey: "test-booking-key-troodos-001",
+          partySize: 2,
+          guestEmail: "troodos@example.com",
+          guestName: "Troodos Guest",
+        },
+        "127.0.0.72"
+      )
+    );
+    expect(res.status).toBe(404);
+    const data = await res.json();
+    expect(data.error?.code).toBe("NOT_FOUND");
+  });
+
   it("returns 200 for valid request when winery exists", async () => {
     const res = await POST(postReq(validBody, "127.0.0.5"));
     expect(res.status).toBe(200);
@@ -150,6 +195,8 @@ describe("POST /api/bookings", () => {
     expect(data.ok).toBe(true);
     expect(data.booking).toBeDefined();
     expect(data.booking.providerId).toBe("tsiakkas");
+    expect(data.partnerConnected).toBe(false);
+    expect(data.message).toMatch(/contact the winery directly/i);
   });
 
   it("rejects reusing an idempotency key with different booking details", async () => {

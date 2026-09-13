@@ -7,6 +7,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
+import { isGuidePublic } from "@/lib/bookable";
 import BookGuideHubFooter from "@/components/BookGuideHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
@@ -36,6 +37,7 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
 }
 
 export default async function GuidesListPage() {
+  const publicGuides = guides.filter(isGuidePublic);
   const [tNav, tCommon, tBookPages, tGuidesDir] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
@@ -61,9 +63,9 @@ export default async function GuidesListPage() {
         <p className="text-muted-ink max-w-2xl">
           {tBookPages("guideList.intro")}
         </p>
-        {guides.some((g) => isPartnerVerified(g)) && (
+        {publicGuides.some((g) => isPartnerVerified(g)) && (
           <p className="text-sm text-muted-ink mt-2 max-w-2xl">
-            {tBookPages("guideList.partnerCount", { count: guides.filter((g) => isPartnerVerified(g)).length })}
+            {tBookPages("guideList.partnerCount", { count: publicGuides.filter((g) => isPartnerVerified(g)).length })}
           </p>
         )}
         <p className="text-sm text-muted-ink mt-2 max-w-2xl">{tBookPages("guideRateRange")}</p>
@@ -80,7 +82,7 @@ export default async function GuidesListPage() {
       </div>
 
       <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-        {guides.map((guide) => {
+        {publicGuides.map((guide) => {
           const trailNames = getTrailNames(guide);
           return (
             <div
