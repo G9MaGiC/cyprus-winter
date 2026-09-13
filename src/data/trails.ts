@@ -2159,7 +2159,7 @@ export const trails: Trail[] = [
     trailhead: "(a) 200m after the village of Lazanias. Ends in the village of Fikardou.",
     bring: ["Water", "Sturdy shoes", "Layers"],
     localSecret: "End in Fikardou for preserved stone houses—arrange car at both ends.",
-    combineWith: ["fikardou","machairas","lazanias-fikardou"],
+    combineWith: ["fikardou","machairas","politiko-machairas"],
     locationText: "Nicosia",
   },
   {
