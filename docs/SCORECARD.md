@@ -8,13 +8,13 @@ Target state for launch readiness. Re-run checks after major releases.
 | **Design system** | Tokens, motion, card/chrome primitives; CI guards | `docs/DESIGN_SUPER_BRIEF.md`, `design-tokens.test.ts` | **5/5** — sprint A–F + `HOME`/`HUB` grid tokens (PRs #157–#158); PR #199: modal CTA tokens, AI-drawer focus rings, single marker convention |
 | **Core funnel** | Discover → Plan → Book E2E green; Plan server shell + client leaf | `npm run test:e2e:gate:ci`, `src/app/(padded)/plan/page.tsx` | **5/5** — E2E gate incl. visual QA (375/768/RTL) + hero load checks |
 | **Security** | Upstash + Supabase in prod; AI paths validated; admin HttpOnly session | Public `curl /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; `resolve-internal-path.test.ts` | **4.5/5** — chat/search hardened (BUG-122–124); admin cookie session shipped (DR-003); Upstash must still be verified in prod |
-| **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 729 unit tests; `images:validate` + `photography-trust.test.ts`; Actions on Node 20.19.0 |
+| **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **2/5** — extensive local gates exist, but GitHub Actions is blocked by BUG-347 and recent runs terminate with `startup_failure` before jobs begin |
 | **i18n / SEO** | 7 locales validate; scan clean; hreflang for all locales | `npm run i18n:validate`, `npm run i18n:scan --fail`, `npm run build` | **5/5** — 2310 keys × 7; tier-1 de/el/pl complete (PRs #186–#189); PR #199: `he` brand typefaces + logical-properties RTL sweep, guest emails localized ×7; graduate badge after lawyer review |
 | **Data maintainability** | `npm run data:validate`; audit tests; no shadow duplicate place IDs | CI quality job + discover data audit tests | **5/5** |
 | **Mobile / Capacitor** | Documented remote URL strategy + error path | `docs/RUNBOOK.md` §5–6, `capacitor.config.ts` | **4.5/5** — sticky Plan/overlay model improved (BUG-127–134) |
 | **Merge hygiene** | Single PR per feature; CI green on GitHub before merge | PR checklist in `AGENTS.md` | **5/5** |
 
-**Overall: 4.7/5** — launch-ready after P0 ops (`docs/LAUNCH_CHECKLIST.md` §1).
+**Overall: 3.9/5** — strong code foundation, but not launch-ready until GitHub Actions is restored, production health is green, real partners are connected, and public trust content is verified.
 
 ---
 
@@ -89,4 +89,4 @@ Details: `docs/QA_BUGS.md`
 - `docs/RUNBOOK.md` — incidents and env matrix
 - `docs/DEEP_REVIEW_2026-05-20.md` — security backlog (DR-*)
 
-Last updated: 2026-08-28.
+Last updated: 2026-09-13.
