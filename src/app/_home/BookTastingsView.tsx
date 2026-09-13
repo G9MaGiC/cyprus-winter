@@ -20,6 +20,10 @@ export default function BookTastingsView({ featured }: Props) {
       ...w,
       name: full?.name ?? w.name,
       region: full?.region ?? "Cyprus",
+      // Internal booking pages exist only for wineries that can actually take
+      // a booking request (launch-truth hardening); others keep the discover
+      // link only.
+      bookable: Boolean(full && full.isBookable !== false && full.bookingUrl),
     };
   });
 
@@ -57,14 +61,16 @@ export default function BookTastingsView({ featured }: Props) {
           </AppLink>
           <div className={CARD.footer}>
             <div className="flex flex-wrap items-center gap-3">
-              <AppLink
-                href={`/book/winery/${w.wineryId}?from=home`}
-                prefetch="auto"
-                className={CTA.primaryCompact}
-                aria-label={`${tCommon("bookTasting")} — ${w.name}`}
-              >
-                {tCommon("bookTasting")}
-              </AppLink>
+              {w.bookable && (
+                <AppLink
+                  href={`/book/winery/${w.wineryId}?from=home`}
+                  prefetch="auto"
+                  className={CTA.primaryCompact}
+                  aria-label={`${tCommon("bookTasting")} — ${w.name}`}
+                >
+                  {tCommon("bookTasting")}
+                </AppLink>
+              )}
               <AppLink
                 href="/wineries"
                 prefetch="auto"

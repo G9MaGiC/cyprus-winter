@@ -20,7 +20,7 @@ import { getBestForLocalizer } from "@/lib/best-for";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
-  return wineries.map((w) => ({ id: w.id }));
+  return wineries.filter((w) => w.isBookable !== false && Boolean(w.bookingUrl)).map((w) => ({ id: w.id }));
 }
 
 export async function generateMetadata({
@@ -31,7 +31,7 @@ export async function generateMetadata({
   const { id } = await params;
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "book.pages.wineryDetail" });
-  const winery = wineries.find((w) => w.id === id);
+  const winery = wineries.find((w) => w.id === id && w.isBookable !== false && Boolean(w.bookingUrl));
   if (!winery) notFound();
   const imageUrl = getAttractionImage(id, "winery");
   const title = t("meta.title", { wineryName: winery.name });
@@ -57,7 +57,7 @@ export default async function WineryBookPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const found = wineries.find((w) => w.id === id);
+  const found = wineries.find((w) => w.id === id && w.isBookable !== false && Boolean(w.bookingUrl));
   if (!found) notFound();
   // Locale content overlay first (AUD-10 pilot), then partner runtime hours:
   // live partner data beats curated translation. JSON-LD below reads `found`
